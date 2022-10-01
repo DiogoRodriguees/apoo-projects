@@ -39,11 +39,11 @@ void testCpu(Cpu& cpu) {
   // cpu.receiveDigit(SIX);
   // cpu.receiveOperation(EQUAL);
 
-  // cpu.receiveDigit(FIVE);
-  // cpu.receiveOperation(ADDITION);
-  // cpu.receiveDigit(FIVE);
-  // cpu.receiveOperation(SUBTRACTION);
-  // cpu.receiveOperation(EQUAL);
+  cpu.receiveDigit(FIVE);
+  cpu.receiveOperation(ADDITION);
+  cpu.receiveDigit(FIVE);
+  cpu.receiveOperation(SUBTRACTION);
+  cpu.receiveOperation(EQUAL);
   /* -5 */
 
 }
