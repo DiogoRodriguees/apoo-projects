@@ -52,8 +52,11 @@ void CpuDiogo::receiveDigit(Digit digit) {
     else {
         if (this->digitsOperand2Count > 0 && memory_two_free) {
             move_memory_to_left();
+            this->display->clear();
             this->digitsOperand2Count = 0;
             memory_two_free = false;
+            this->count_equal = 0;
+
         }
         this->digitsOperand2[this->digitsOperand2Count++] = digit;
     }
@@ -72,6 +75,7 @@ void CpuDiogo::receiveOperation(Operation operation) {
     }
 
     if (this->operation != NOOP && this->digitsOperand2Count > 0) {
+        this->count_equal = 0;
         this->operate();
     }
 

@@ -45,7 +45,11 @@ void testCpu(Cpu& cpu) {
   cpu.receiveDigit(FIVE);
   cpu.receiveOperation(EQUAL);
   cpu.receiveOperation(EQUAL);
+  cpu.receiveDigit(ONE);
+  cpu.receiveDigit(ZERO);
   cpu.receiveOperation(EQUAL);
+
+
   /* -5 */
 
 }
