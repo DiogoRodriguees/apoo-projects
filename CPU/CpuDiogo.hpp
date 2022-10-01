@@ -22,6 +22,7 @@ private:
     int digitsOperand2Count = 0;
     int decimal_position1 = -1;
     int decimal_position2 = -1;
+    int count_equal = 0;
 
     void reset();
     void operate();

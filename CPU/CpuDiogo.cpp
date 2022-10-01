@@ -66,6 +66,7 @@ void CpuDiogo::receiveDigit(Digit digit) {
 void CpuDiogo::receiveOperation(Operation operation) {
 
     if (operation == EQUAL && this->digitsOperand2Count > 0) {
+        this->count_equal++;
         this->operate();
         return;
     }
@@ -277,12 +278,12 @@ void CpuDiogo::operate() {
 
     if (result == 0) array_with_result[i++] = 0;
 
-    move_memory_to_left();
+    if (this->count_equal <= 1) move_memory_to_left();
     convert_to_digit(i, array_with_result, this->digitsOperand2, &this->digitsOperand2Count, &this->decimal_position2, result_decimal_position, &this->signal_digit_operand2, have_signal);
     show_digits(this->digitsOperand2, this->digitsOperand2Count, this->decimal_position2, have_signal);
     copy_to_memory();
 
     std::cout << "\nmemory_one: " << memory_one;
     std::cout << "\nmemory_two: " << memory_two;
-    memory_two_free = true;
+    if (this->count_equal <= 1) memory_two_free = true;
 }
