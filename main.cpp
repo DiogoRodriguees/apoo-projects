@@ -56,10 +56,24 @@ void testCpu(Cpu& cpu) {
 
 void testKeyboard(Keyboard& keyboard) {
   try {
-    keyboard.findKey('1').press();
+    // keyboard.findKey('1').press();
+    // keyboard.findKey('2').press();
+    // keyboard.findKey('.').press();
+    // keyboard.findKey('3').press();
+    // keyboard.findKey('+').press();
+    // keyboard.findKey('4').press();
+    // keyboard.findKey('.').press();
+    // keyboard.findKey('5').press();
+    // keyboard.findKey('6').press();
+    // keyboard.findKey('=').press();
+
+    keyboard.findKey('5').press();
     keyboard.findKey('+').press();
-    keyboard.findKey('1').press();
+    keyboard.findKey('5').press();
+    keyboard.findKey('-').press();
     keyboard.findKey('=').press();
+
+
   }
   catch (const char* exception) {
     std::cerr << exception;
@@ -78,18 +92,19 @@ int main() {
   KeyDiogo keyOne('1', ONE);
   KeyDiogo keyTwo('2', TWO);
   KeyDiogo keyThree('3', THREE);
-  KeyDiogo keyFour('4', THREE);
-  KeyDiogo keyFive('5', THREE);
-  KeyDiogo keySix('6', THREE);
-  KeyDiogo keySeven('7', THREE);
-  KeyDiogo keyEight('8', THREE);
-  KeyDiogo keyNine('9', THREE);
+  KeyDiogo keyFour('4', FOUR);
+  KeyDiogo keyFive('5', FIVE);
+  KeyDiogo keySix('6', SIX);
+  KeyDiogo keySeven('7', SEVEN);
+  KeyDiogo keyEight('8', EIGHT);
+  KeyDiogo keyNine('9', NINE);
 
   KeyDiogo keyAddition('+', ADDITION);
   KeyDiogo keySubtraction('-', SUBTRACTION);
   KeyDiogo keyDivision('/', DIVISION);
   KeyDiogo keyMultiplication('*', MULTIPLICATION);
   KeyDiogo keyEqual('=', EQUAL);
+  KeyDiogo keyDecimalSeparator('.', DECIMAL_SEPARATOR);
 
   /* Fase de construção/ligação */
   c1.setDisplay(d1);
@@ -110,9 +125,10 @@ int main() {
   kb1.addKey(keyDivision);
   kb1.addKey(keyMultiplication);
   kb1.addKey(keyEqual);
+  kb1.addKey(keyDecimalSeparator);
 
   /* Fase de testes */
   // testDisplay(d1);
-  testCpu(c1);
-  // testKeyboard(kb1);
+  // testCpu(c1);
+  testKeyboard(kb1);
 }
