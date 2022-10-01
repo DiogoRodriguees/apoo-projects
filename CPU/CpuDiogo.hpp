@@ -27,7 +27,7 @@ private:
     void operate();
     void copy_to_memory();
     void memory_read_clear();
-    void copia_memoryone_to_memorytwo();
+    void move_memory_to_left();
     void show_digits(Digit*, int, int, bool);
     void convert_to_digit(int, int*, Digit*, int*, int*, int, Signal*, bool);
     float convert_to_float(int, Digit*, int, Signal);

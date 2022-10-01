@@ -4,13 +4,14 @@
 #include <string.h>
 
 /* FUNÇÕES AUXILIARES */
-void CpuDiogo::copia_memoryone_to_memorytwo() {
+void CpuDiogo::move_memory_to_left() {
     for (int i = 0; i < 8; i++) {
         this->digitsOperand1[i] = this->digitsOperand2[i];
     }
     this->decimal_position1 = this->decimal_position2;
     this->signal_digit_operand1 = this->signal_digit_operand2;
     this->digitsOperand1Count = this->digitsOperand2Count;
+    this->signal_digit_operand2 = POSITIVE;
 }
 
 void CpuDiogo::copy_to_memory() {
@@ -50,7 +51,7 @@ void CpuDiogo::receiveDigit(Digit digit) {
     }
     else {
         if (this->digitsOperand2Count > 0 && memory_two_free) {
-            copia_memoryone_to_memorytwo();
+            move_memory_to_left();
             this->digitsOperand2Count = 0;
             memory_two_free = false;
         }
@@ -276,10 +277,12 @@ void CpuDiogo::operate() {
 
     if (result == 0) array_with_result[i++] = 0;
 
-    copia_memoryone_to_memorytwo();
+    move_memory_to_left();
     convert_to_digit(i, array_with_result, this->digitsOperand2, &this->digitsOperand2Count, &this->decimal_position2, result_decimal_position, &this->signal_digit_operand2, have_signal);
     show_digits(this->digitsOperand2, this->digitsOperand2Count, this->decimal_position2, have_signal);
     copy_to_memory();
 
+    std::cout << "\nmemory_one: " << memory_one;
+    std::cout << "\nmemory_two: " << memory_two;
     memory_two_free = true;
 }
