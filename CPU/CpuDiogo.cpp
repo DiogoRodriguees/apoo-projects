@@ -12,6 +12,8 @@ void CpuDiogo::move_memory_to_left() {
     this->signal_digit_operand1 = this->signal_digit_operand2;
     this->digitsOperand1Count = this->digitsOperand2Count;
     this->signal_digit_operand2 = POSITIVE;
+    this->decimal_position2 = -1;
+    this->digitsOperand2Count = 0;
 }
 
 void CpuDiogo::copy_to_memory() {
@@ -75,8 +77,11 @@ void CpuDiogo::receiveOperation(Operation operation) {
     }
 
     if (this->operation != NOOP && this->digitsOperand2Count > 0) {
-        this->count_equal = 0;
-        this->operate();
+        if (this->count_equal == 0) {
+            this->count_equal = 0;
+            this->operate();
+
+        }
     }
 
     this->operation = operation;
@@ -88,12 +93,12 @@ void CpuDiogo::receiveControl(Control control) {
         break;
     case DECIMAL_SEPARATOR:
         if (this->digitsOperand2Count > 0 && this->decimal_position2 == -1) {
-            this->decimal_position2 = this->digitsOperand2Count;
+            this->decimal_position2 = this->digitsOperand2Count - 1;
             this->display->addDigit(NO_DIGIT, true);
 
         }
         if (this->digitsOperand1Count > 0 && this->decimal_position1 == -1) {
-            this->decimal_position1 = this->digitsOperand1Count;
+            this->decimal_position1 = this->digitsOperand1Count - 1;
             this->display->addDigit(NO_DIGIT, true);
         }
         break;
@@ -161,9 +166,10 @@ float CpuDiogo::convert_to_float(int quantidae_de_operandos, Digit* array, int d
 
     float resultado_em_float = resultado;
     float dividendo = 1;
+    int number_float = quantidae_de_operandos - (decimal_position + 1);
 
     if (decimal_position != -1) {
-        dividendo = pow(10, quantidae_de_operandos - decimal_position);
+        dividendo = pow(10, number_float);
         resultado_em_float = resultado / (dividendo);
     }
 
@@ -288,6 +294,8 @@ void CpuDiogo::operate() {
     copy_to_memory();
 
     std::cout << "\nmemory_one: " << memory_one;
+    // std::cout << "\ndigits    : " << this->digitsOperand1Count;
+    // std::cout << "\ndecimal   : " << this->decimal_position1;
     std::cout << "\nmemory_two: " << memory_two;
     if (this->count_equal <= 1) memory_two_free = true;
 }

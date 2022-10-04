@@ -56,6 +56,7 @@ void testCpu(Cpu& cpu) {
 
 void testKeyboard(Keyboard& keyboard) {
   try {
+    /* Teste 1 */
     // keyboard.findKey('1').press();
     // keyboard.findKey('2').press();
     // keyboard.findKey('.').press();
@@ -67,12 +68,37 @@ void testKeyboard(Keyboard& keyboard) {
     // keyboard.findKey('6').press();
     // keyboard.findKey('=').press();
 
-    keyboard.findKey('5').press();
+    /* Teste 2 */
+    // keyboard.findKey('5').press();
+    // keyboard.findKey('+').press();
+    // keyboard.findKey('5').press();
+    // keyboard.findKey('-').press();
+    // keyboard.findKey('=').press();
+
+    /* Teste 3 */
+    keyboard.findKey('1').press();
+    keyboard.findKey('2').press();
+    keyboard.findKey('.').press();
+    keyboard.findKey('3').press();
     keyboard.findKey('+').press();
+    keyboard.findKey('4').press();
+    keyboard.findKey('.').press();
     keyboard.findKey('5').press();
-    keyboard.findKey('-').press();
+    keyboard.findKey('6').press();
+    keyboard.findKey('+').press();
+    keyboard.findKey('4').press();
+    keyboard.findKey('.').press();
+    keyboard.findKey('5').press();
+    keyboard.findKey('6').press();
     keyboard.findKey('=').press();
 
+    /* Teste 4 */
+    keyboard.findKey('-').press();
+    keyboard.findKey('8').press();
+    keyboard.findKey('=').press();
+    keyboard.findKey('+').press();
+    keyboard.findKey('5').press();
+    keyboard.findKey('=').press();
 
   }
   catch (const char* exception) {
