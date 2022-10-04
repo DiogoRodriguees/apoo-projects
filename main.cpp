@@ -27,6 +27,7 @@ void testDisplay(Display& display) {
 
 void testCpu(Cpu& cpu) {
   std::cout << "Testing CPU...\n";
+  /* Teste 1 */
   // cpu.receiveControl(ON_CLEAR_ERROR);
   // cpu.receiveDigit(ONE);
   // cpu.receiveDigit(TWO);
@@ -39,17 +40,16 @@ void testCpu(Cpu& cpu) {
   // cpu.receiveDigit(SIX);
   // cpu.receiveOperation(EQUAL);
 
+  /* Teste 2 */
   // cpu.receiveOperation(SUBTRACTION);
-  cpu.receiveDigit(EIGHT);
-  cpu.receiveOperation(ADDITION);
-  cpu.receiveDigit(FIVE);
-  cpu.receiveOperation(EQUAL);
-  cpu.receiveOperation(EQUAL);
-  cpu.receiveDigit(ONE);
-  cpu.receiveDigit(ZERO);
-  cpu.receiveOperation(EQUAL);
-
-
+  // cpu.receiveDigit(EIGHT);
+  // cpu.receiveOperation(ADDITION);
+  // cpu.receiveDigit(FIVE);
+  // cpu.receiveOperation(EQUAL);
+  // cpu.receiveOperation(EQUAL);
+  // cpu.receiveDigit(ONE);
+  // cpu.receiveDigit(ZERO);
+  // cpu.receiveOperation(EQUAL);
   /* -5 */
 
 }
@@ -76,21 +76,21 @@ void testKeyboard(Keyboard& keyboard) {
     // keyboard.findKey('=').press();
 
     /* Teste 3 */
-    keyboard.findKey('1').press();
-    keyboard.findKey('2').press();
-    keyboard.findKey('.').press();
-    keyboard.findKey('3').press();
-    keyboard.findKey('+').press();
-    keyboard.findKey('4').press();
-    keyboard.findKey('.').press();
-    keyboard.findKey('5').press();
-    keyboard.findKey('6').press();
-    keyboard.findKey('+').press();
-    keyboard.findKey('4').press();
-    keyboard.findKey('.').press();
-    keyboard.findKey('5').press();
-    keyboard.findKey('6').press();
-    keyboard.findKey('=').press();
+    // keyboard.findKey('1').press();
+    // keyboard.findKey('2').press();
+    // keyboard.findKey('.').press();
+    // keyboard.findKey('3').press();
+    // keyboard.findKey('+').press();
+    // keyboard.findKey('4').press();
+    // keyboard.findKey('.').press();
+    // keyboard.findKey('5').press();
+    // keyboard.findKey('6').press();
+    // keyboard.findKey('+').press();
+    // keyboard.findKey('4').press();
+    // keyboard.findKey('.').press();
+    // keyboard.findKey('5').press();
+    // keyboard.findKey('6').press();
+    // keyboard.findKey('=').press();
 
     /* Teste 4 */
     keyboard.findKey('-').press();
@@ -105,7 +105,6 @@ void testKeyboard(Keyboard& keyboard) {
     std::cerr << exception;
   }
 }
-/* Coloque aqui a referência para suas implementações */
 
 int main() {
   /* Fase de criação */
@@ -114,7 +113,7 @@ int main() {
   CpuDiogo c1;
   KeyboardDiogo kb1;
 
-  KeyDiogo keyZero('0', ONE);
+  KeyDiogo keyZero('0', ZERO);
   KeyDiogo keyOne('1', ONE);
   KeyDiogo keyTwo('2', TWO);
   KeyDiogo keyThree('3', THREE);
@@ -136,6 +135,7 @@ int main() {
   c1.setDisplay(d1);
   kb1.setCpu(c1);
 
+  kb1.addKey(keyZero);
   kb1.addKey(keyOne);
   kb1.addKey(keyTwo);
   kb1.addKey(keyThree);

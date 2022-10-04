@@ -119,6 +119,7 @@ void CpuDiogo::setDisplay(Display& display) {
 
 void CpuDiogo::show_digits(Digit* array, int size_array, int dot_position, bool have_signal) {
     this->display->clear();
+    
     int i = 0;
     if (have_signal) this->display->setSignal(NEGATIVE);
 
@@ -293,9 +294,7 @@ void CpuDiogo::operate() {
     show_digits(this->digitsOperand2, this->digitsOperand2Count, this->decimal_position2, have_signal);
     copy_to_memory();
 
-    std::cout << "\nmemory_one: " << memory_one;
-    // std::cout << "\ndigits    : " << this->digitsOperand1Count;
-    // std::cout << "\ndecimal   : " << this->decimal_position1;
-    std::cout << "\nmemory_two: " << memory_two;
+    // std::cout << "\nmemory_one: " << memory_one;
+    // std::cout << "\nmemory_two: " << memory_two;
     if (this->count_equal <= 1) memory_two_free = true;
 }
