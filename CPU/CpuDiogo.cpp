@@ -18,6 +18,9 @@ void CpuDiogo::moveMemoryToLeft() {
     this->digitsOperand2Count = 0;
 }
 
+/******************************************************
+*        COPY OF MEMORY TWO FOR MEMORY RESERV         *
+*******************************************************/
 void CpuDiogo::copyToMemory() {
     for (int i = 0; i < 8; i++) {
         this->memory[i] = this->digitsOperand2[i];
@@ -27,6 +30,9 @@ void CpuDiogo::copyToMemory() {
     this->memory_signal = this->signal_digit_operand2;
 }
 
+/******************************************************
+*               READ MEMORY CONTENTS                  *
+*******************************************************/
 void CpuDiogo::memoryReadClear() {
     bool signal = this->memory_signal == NEGATIVE ? true : false;
     showDigits(this->memory, this->memory_digits_count, this->memory_decimal_position, signal);
@@ -39,6 +45,9 @@ void CpuDiogo::memoryReadClear() {
 
 }
 
+/******************************************************
+*                RESET ALL MEMORIES                   *
+*******************************************************/
 void CpuDiogo::reset() {
     this->decimal_position1 = -1;
     this->decimal_position2 = -1;
@@ -81,7 +90,7 @@ void CpuDiogo::receiveDigit(Digit digit) {
 }
 
 /******************************************************
-*               RECEIVE OPERATION                     *
+*                 RECEIVE OPERATION                   *
 *******************************************************/
 void CpuDiogo::receiveOperation(Operation operation) {
 
@@ -103,7 +112,7 @@ void CpuDiogo::receiveOperation(Operation operation) {
 }
 
 /******************************************************
-*               FUNÇÕES AUXILIARES                    *
+*                  RECEIVE CONTROL                    *
 *******************************************************/
 void CpuDiogo::receiveControl(Control control) {
     switch (control) {
