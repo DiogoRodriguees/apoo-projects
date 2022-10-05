@@ -3,7 +3,9 @@
 #include <math.h>
 #include <string.h>
 
-/* FUNÇÕES AUXILIARES */
+/******************************************************
+*               FUNÇÕES AUXILIARES                    *
+*******************************************************/
 void CpuDiogo::moveMemoryToLeft() {
     for (int i = 0; i < 8; i++) {
         this->digitsOperand1[i] = this->digitsOperand2[i];
@@ -45,7 +47,17 @@ void CpuDiogo::reset() {
     this->operation = NOOP;
 }
 
-/* FUNÇÔES DA ABSTRAÇÃO */
+
+/******************************************************
+*                    SET DISPLAY                      *
+*******************************************************/
+void CpuDiogo::setDisplay(Display& display) {
+    this->display = &display;
+}
+
+/******************************************************
+*                   RECEIVE DIGIT                     *
+*******************************************************/
 void CpuDiogo::receiveDigit(Digit digit) {
     /* Guardar o dígito no operando correspondente */
     if (this->operation == NOOP) {
@@ -68,6 +80,9 @@ void CpuDiogo::receiveDigit(Digit digit) {
 
 }
 
+/******************************************************
+*               RECEIVE OPERATION                     *
+*******************************************************/
 void CpuDiogo::receiveOperation(Operation operation) {
 
     if (operation == EQUAL && this->digitsOperand2Count > 0) {
@@ -87,6 +102,9 @@ void CpuDiogo::receiveOperation(Operation operation) {
     this->operation = operation;
 }
 
+/******************************************************
+*               FUNÇÕES AUXILIARES                    *
+*******************************************************/
 void CpuDiogo::receiveControl(Control control) {
     switch (control) {
     case ON_CLEAR_ERROR: this->display->clear();
@@ -113,10 +131,9 @@ void CpuDiogo::receiveControl(Control control) {
     }
 }
 
-void CpuDiogo::setDisplay(Display& display) {
-    this->display = &display;
-}
-
+/******************************************************
+*               SHOW DIGIT ON DISPLAY                 *
+*******************************************************/
 void CpuDiogo::showDigits(Digit* array, int size_array, int dot_position, bool have_signal) {
     this->display->clear();
 
@@ -134,6 +151,9 @@ void CpuDiogo::showDigits(Digit* array, int size_array, int dot_position, bool h
     }
 }
 
+/******************************************************
+*              CONVERT DIGIT TO FLOAT                 *
+*******************************************************/
 float CpuDiogo::convertToFloat(int quantidae_de_operandos, Digit* array, int decimal_position, Signal signal) {
     int resultado = 0;
 
@@ -178,6 +198,9 @@ float CpuDiogo::convertToFloat(int quantidae_de_operandos, Digit* array, int dec
     return resultado_em_float;
 }
 
+/******************************************************
+*              CONVERT FLOAT TO DIGIT                 *
+*******************************************************/
 void CpuDiogo::convertToDigit(int size_array, int* array, Digit* memory, int* count, int* decimal, int decimal_position, Signal* signal, bool have_signal) {
     int j = 0;
     *count = 0;
@@ -215,7 +238,10 @@ void CpuDiogo::convertToDigit(int size_array, int* array, Digit* memory, int* co
 
 }
 
-int descobre_decimal_position(float number) {
+/******************************************************
+*         SEARCH DECIMAL POSITION FROM RESULT         *
+*******************************************************/
+int searchDecimalPosition(float number) {
     int part_inteira = number;
     int count = -1;
 
@@ -231,6 +257,9 @@ int descobre_decimal_position(float number) {
     return count;
 }
 
+/******************************************************
+*                 MAKE OPERATION                      *
+*******************************************************/
 void CpuDiogo::operate() {
     float memory_one = convertToFloat(this->digitsOperand1Count, this->digitsOperand1, this->decimal_position1, this->signal_digit_operand1);
     float memory_two = convertToFloat(this->digitsOperand2Count, this->digitsOperand2, this->decimal_position2, this->signal_digit_operand2);
@@ -259,7 +288,7 @@ void CpuDiogo::operate() {
     int i = 0;
     int result_integer = result;
     int array_with_result[8] = { 0,0,0,0,0,0,0,0 };
-    int result_decimal_position = descobre_decimal_position(result);
+    int result_decimal_position = searchDecimalPosition(result);
 
     while ((result - result_integer) > 0) {
         result *= 10;
