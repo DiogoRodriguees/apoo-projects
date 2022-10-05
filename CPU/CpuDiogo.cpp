@@ -4,7 +4,7 @@
 #include <string.h>
 
 /* FUNÇÕES AUXILIARES */
-void CpuDiogo::move_memory_to_left() {
+void CpuDiogo::moveMemoryToLeft() {
     for (int i = 0; i < 8; i++) {
         this->digitsOperand1[i] = this->digitsOperand2[i];
     }
@@ -16,7 +16,7 @@ void CpuDiogo::move_memory_to_left() {
     this->digitsOperand2Count = 0;
 }
 
-void CpuDiogo::copy_to_memory() {
+void CpuDiogo::copyToMemory() {
     for (int i = 0; i < 8; i++) {
         this->memory[i] = this->digitsOperand2[i];
     }
@@ -25,9 +25,9 @@ void CpuDiogo::copy_to_memory() {
     this->memory_signal = this->signal_digit_operand2;
 }
 
-void CpuDiogo::memory_read_clear() {
+void CpuDiogo::memoryReadClear() {
     bool signal = this->memory_signal == NEGATIVE ? true : false;
-    show_digits(this->memory, this->memory_digits_count, this->memory_decimal_position, signal);
+    showDigits(this->memory, this->memory_digits_count, this->memory_decimal_position, signal);
     for (int i = 0; i < 8; i++) {
         this->memory[i] = ZERO;
     }
@@ -53,7 +53,7 @@ void CpuDiogo::receiveDigit(Digit digit) {
     }
     else {
         if (this->digitsOperand2Count > 0 && memory_two_free) {
-            move_memory_to_left();
+            moveMemoryToLeft();
             this->display->clear();
             this->digitsOperand2Count = 0;
             memory_two_free = false;
@@ -104,7 +104,7 @@ void CpuDiogo::receiveControl(Control control) {
         break;
     case OFF: reset();
         break;
-    case MEMORY_READ_CLEAR: memory_read_clear();
+    case MEMORY_READ_CLEAR: memoryReadClear();
         break;
     case MEMORY_ADDITION:
         break;
@@ -117,9 +117,9 @@ void CpuDiogo::setDisplay(Display& display) {
     this->display = &display;
 }
 
-void CpuDiogo::show_digits(Digit* array, int size_array, int dot_position, bool have_signal) {
+void CpuDiogo::showDigits(Digit* array, int size_array, int dot_position, bool have_signal) {
     this->display->clear();
-    
+
     int i = 0;
     if (have_signal) this->display->setSignal(NEGATIVE);
 
@@ -134,7 +134,7 @@ void CpuDiogo::show_digits(Digit* array, int size_array, int dot_position, bool 
     }
 }
 
-float CpuDiogo::convert_to_float(int quantidae_de_operandos, Digit* array, int decimal_position, Signal signal) {
+float CpuDiogo::convertToFloat(int quantidae_de_operandos, Digit* array, int decimal_position, Signal signal) {
     int resultado = 0;
 
     for (int i = 0; i < quantidae_de_operandos; i++)
@@ -178,7 +178,7 @@ float CpuDiogo::convert_to_float(int quantidae_de_operandos, Digit* array, int d
     return resultado_em_float;
 }
 
-void CpuDiogo::convert_to_digit(int size_array, int* array, Digit* memory, int* count, int* decimal, int decimal_position, Signal* signal, bool have_signal) {
+void CpuDiogo::convertToDigit(int size_array, int* array, Digit* memory, int* count, int* decimal, int decimal_position, Signal* signal, bool have_signal) {
     int j = 0;
     *count = 0;
     *decimal = decimal_position;
@@ -232,8 +232,8 @@ int descobre_decimal_position(float number) {
 }
 
 void CpuDiogo::operate() {
-    float memory_one = convert_to_float(this->digitsOperand1Count, this->digitsOperand1, this->decimal_position1, this->signal_digit_operand1);
-    float memory_two = convert_to_float(this->digitsOperand2Count, this->digitsOperand2, this->decimal_position2, this->signal_digit_operand2);
+    float memory_one = convertToFloat(this->digitsOperand1Count, this->digitsOperand1, this->decimal_position1, this->signal_digit_operand1);
+    float memory_two = convertToFloat(this->digitsOperand2Count, this->digitsOperand2, this->decimal_position2, this->signal_digit_operand2);
     float result = 0;
 
     // ADDITION, SUBTRACTION, MULTIPLICATION, DIVISION, EQUAL, NOOP
@@ -289,10 +289,10 @@ void CpuDiogo::operate() {
 
     if (result == 0) array_with_result[i++] = 0;
 
-    if (this->count_equal <= 1) move_memory_to_left();
-    convert_to_digit(i, array_with_result, this->digitsOperand2, &this->digitsOperand2Count, &this->decimal_position2, result_decimal_position, &this->signal_digit_operand2, have_signal);
-    show_digits(this->digitsOperand2, this->digitsOperand2Count, this->decimal_position2, have_signal);
-    copy_to_memory();
+    if (this->count_equal <= 1) moveMemoryToLeft();
+    convertToDigit(i, array_with_result, this->digitsOperand2, &this->digitsOperand2Count, &this->decimal_position2, result_decimal_position, &this->signal_digit_operand2, have_signal);
+    showDigits(this->digitsOperand2, this->digitsOperand2Count, this->decimal_position2, have_signal);
+    copyToMemory();
 
     // std::cout << "\nmemory_one: " << memory_one;
     // std::cout << "\nmemory_two: " << memory_two;

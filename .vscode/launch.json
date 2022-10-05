@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Diogo/OneDrive/Documentos/Faculdade/Faculdade/3° Periodo/Analise de projeto orientado a Objeto/CALCULATo_CPP_APOO",
-      "program": "c:/Users/Diogo/OneDrive/Documentos/Faculdade/Faculdade/3° Periodo/Analise de projeto orientado a Objeto/CALCULATo_CPP_APOO/build/Debug/outDebug",
+      "cwd": "c:/Users/Diogo/OneDrive/Documentos/FACULDADE/Periodos e Disciplinas/3° Periodo/Analise de projeto orientado a Objeto/CALCULATOR_CPP_APOO",
+      "program": "c:/Users/Diogo/OneDrive/Documentos/FACULDADE/Periodos e Disciplinas/3° Periodo/Analise de projeto orientado a Objeto/CALCULATOR_CPP_APOO/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

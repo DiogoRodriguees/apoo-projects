@@ -3,7 +3,7 @@
 #include "../Calculator/Calculator.hpp"
 
 #define MAX_DIGITS 8
-class CpuDiogo: public Cpu {
+class CpuDiogo : public Cpu {
 private:
     Display* display;
     Operation operation = NOOP;
@@ -26,12 +26,12 @@ private:
 
     void reset();
     void operate();
-    void copy_to_memory();
-    void memory_read_clear();
-    void move_memory_to_left();
-    void show_digits(Digit*, int, int, bool);
-    void convert_to_digit(int, int*, Digit*, int*, int*, int, Signal*, bool);
-    float convert_to_float(int, Digit*, int, Signal);
+    void copyToMemory();
+    void memoryReadClear();
+    void moveMemoryToLeft();
+    void showDigits(Digit*, int, int, bool);
+    void convertToDigit(int, int*, Digit*, int*, int*, int, Signal*, bool);
+    float convertToFloat(int, Digit*, int, Signal);
 
 public:
     void receiveDigit(Digit);
