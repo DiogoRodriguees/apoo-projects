@@ -119,14 +119,29 @@ void CpuDiogo::receiveControl(Control control) {
     case ON_CLEAR_ERROR: this->display->clear();
         break;
     case DECIMAL_SEPARATOR:
+
+
         if (this->digitsOperand2Count > 0 && this->decimal_position2 == -1) {
             this->decimal_position2 = this->digitsOperand2Count - 1;
             this->display->addDigit(NO_DIGIT, true);
+            return;
 
         }
         if (this->digitsOperand1Count > 0 && this->decimal_position1 == -1) {
             this->decimal_position1 = this->digitsOperand1Count - 1;
             this->display->addDigit(NO_DIGIT, true);
+            return;
+        }
+        if (this->digitsOperand1Count == 0 && this->decimal_position1 == -1) {
+            this->receiveDigit(ZERO);
+            this->decimal_position1 = 0;
+            return;
+        }
+        else if (this->digitsOperand2Count == 0 && this->decimal_position2 == -1) {
+            this->receiveDigit(ZERO);
+            this->decimal_position2 = 0;
+            return;
+
         }
         break;
     case OFF: reset();

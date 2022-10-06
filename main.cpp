@@ -67,6 +67,7 @@ void testKeyboard(Keyboard& keyboard) {
     // keyboard.findKey('5').press();
     // keyboard.findKey('6').press();
     // keyboard.findKey('=').press();
+    /* 16.86 */
 
     /* Teste 2 */
     // keyboard.findKey('5').press();
@@ -74,6 +75,7 @@ void testKeyboard(Keyboard& keyboard) {
     // keyboard.findKey('5').press();
     // keyboard.findKey('-').press();
     // keyboard.findKey('=').press();
+    /* -5 */
 
     /* Teste 3 */
     // keyboard.findKey('1').press();
@@ -91,14 +93,23 @@ void testKeyboard(Keyboard& keyboard) {
     // keyboard.findKey('5').press();
     // keyboard.findKey('6').press();
     // keyboard.findKey('=').press();
+    /* 21.42 */
 
     /* Teste 4 */
-    keyboard.findKey('-').press();
-    keyboard.findKey('8').press();
-    keyboard.findKey('=').press();
-    keyboard.findKey('+').press();
-    keyboard.findKey('5').press();
-    keyboard.findKey('=').press();
+    // keyboard.findKey('0').press();
+    // keyboard.findKey('.').press();
+    // keyboard.findKey('8').press();
+    // keyboard.findKey('+').press();
+    // keyboard.findKey('0').press();
+    // keyboard.findKey('.').press();
+    // keyboard.findKey('5').press();
+    // keyboard.findKey('=').press();
+    // keyboard.findKey('=').press();
+    // keyboard.findKey('=').press();
+    // keyboard.findKey('=').press();
+    // keyboard.findKey('=').press();
+    // keyboard.findKey('=').press();
+    /* 3.8 */
 
   }
   catch (const char* exception) {
