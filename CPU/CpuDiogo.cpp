@@ -134,11 +134,13 @@ void CpuDiogo::receiveControl(Control control) {
         }
         if (this->digitsOperand1Count == 0 && this->decimal_position1 == -1) {
             this->receiveDigit(ZERO);
+            this->display->addDigit(NO_DIGIT, true);
             this->decimal_position1 = 0;
             return;
         }
         else if (this->digitsOperand2Count == 0 && this->decimal_position2 == -1) {
             this->receiveDigit(ZERO);
+            this->display->addDigit(NO_DIGIT, true);
             this->decimal_position2 = 0;
             return;
 

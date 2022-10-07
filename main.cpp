@@ -117,7 +117,7 @@ void testKeyboard(Keyboard& keyboard) {
   }
 }
 
-int main() {
+int main(int argc, char** argv) {
   /* Fase de criação */
   /* Instancie suas implementações aqui */
   DisplayDiogo d1;
@@ -164,8 +164,10 @@ int main() {
   kb1.addKey(keyEqual);
   kb1.addKey(keyDecimalSeparator);
 
+  // for (int i = 1;i < argc; i++) kb1.findKey(*argv[i]).press();
+  
   /* Fase de testes */
   // testDisplay(d1);
   // testCpu(c1);
-  testKeyboard(kb1);
+  // testKeyboard(kb1);
 }
