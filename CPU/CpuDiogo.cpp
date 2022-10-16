@@ -179,6 +179,7 @@ void CpuDiogo::reset() {
     this->digitsOperand2Count = 0;
     this->digitsOperand1Count = 0;
     this->operation = NOOP;
+    this->display->clear();
 }
 
 

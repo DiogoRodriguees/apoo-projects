@@ -118,6 +118,7 @@ void testKeyboard(Keyboard& keyboard) {
     keyboard.findKey('a').press();
     keyboard.findKey('a').press();
     keyboard.findKey('r').press();
+    keyboard.findKey('o').press();
   }
   catch (const char* exception) {
     std::cerr << exception;
