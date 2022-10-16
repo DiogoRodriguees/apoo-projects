@@ -19,29 +19,134 @@ void CpuDiogo::moveMemoryToLeft() {
 }
 
 /******************************************************
+*                  ADCTION MEMORY                     *
+*******************************************************/
+void CpuDiogo::addMemory() {
+    float memory_one = convertToFloat(this->digitsOperand2Count, this->digitsOperand2, this->decimal_position2, this->signal_digit_operand2); ;
+    float memory_two = convertToFloat(this->memoryDigitsCount, this->memory, this->memoryDecimalPosition, this->memorySignal);;
+    float result;
+    result = memory_one + memory_two;
+
+    bool have_signal = false;
+    float preserv_result = result;
+
+    if (result < 0) {
+        have_signal = true;
+        result *= -1;
+    }
+
+    int i = 0;
+    int result_integer = result;
+    int array_with_result[8] = { 0,0,0,0,0,0,0,0 };
+    int result_decimal_position = searchDecimalPosition(result);
+
+    while ((result - result_integer) > 0) {
+        result *= 10;
+        result_integer = result;
+    }
+
+    result_integer = result;
+    while (result_integer > 0) {
+        array_with_result[i++] = result_integer % 10;
+        result_integer /= 10;
+    }
+
+    // Para numeros nos intervalos ]-1,-0.1] e [0.1, 1[
+    if (preserv_result > 0.09 && preserv_result < 1) array_with_result[i++] = 0;
+
+    // Para numeros nos intervalos [-0.09, 0[ e ]0, 0.09]
+    if (preserv_result > 0 && preserv_result < 0.1) {
+        while ((int)preserv_result < 1) {
+            int k = 0;
+            while (k < 7) {
+                array_with_result[k++] = array_with_result[k + 1];
+            }
+            array_with_result[k] = 0;
+            preserv_result *= 10;
+        }
+    }
+
+    if (result == 0) array_with_result[i++] = 0;
+    convertToDigit(i, array_with_result, this->memory, &this->memoryDigitsCount, &this->memoryDecimalPosition, result_decimal_position, &this->memorySignal, have_signal);
+}
+
+/******************************************************
+*                SUBTRACTION MEMORY                   *
+*******************************************************/
+void CpuDiogo::subMemory() {
+    float memory_one = convertToFloat(this->memoryDigitsCount, this->memory, this->memoryDecimalPosition, this->memorySignal);;
+    float memory_two = convertToFloat(this->digitsOperand2Count, this->digitsOperand2, this->decimal_position2, this->signal_digit_operand2); ;
+    float result;
+    result = memory_one - memory_two;
+
+    bool have_signal = false;
+    float preserv_result = result;
+
+    if (result < 0) {
+        have_signal = true;
+        result *= -1;
+    }
+
+    int i = 0;
+    int result_integer = result;
+    int array_with_result[8] = { 0,0,0,0,0,0,0,0 };
+    int result_decimal_position = searchDecimalPosition(result);
+
+    while ((result - result_integer) > 0) {
+        result *= 10;
+        result_integer = result;
+    }
+
+    result_integer = result;
+    while (result_integer > 0) {
+        array_with_result[i++] = result_integer % 10;
+        result_integer /= 10;
+    }
+
+    // Para numeros nos intervalos ]-1,-0.1] e [0.1, 1[
+    if (preserv_result > 0.09 && preserv_result < 1) array_with_result[i++] = 0;
+
+    // Para numeros nos intervalos [-0.09, 0[ e ]0, 0.09]
+    if (preserv_result > 0 && preserv_result < 0.1) {
+        while ((int)preserv_result < 1) {
+            int k = 0;
+            while (k < 7) {
+                array_with_result[k++] = array_with_result[k + 1];
+            }
+            array_with_result[k] = 0;
+            preserv_result *= 10;
+        }
+    }
+
+    if (result == 0) array_with_result[i++] = 0;
+    convertToDigit(i, array_with_result, this->memory, &this->memoryDigitsCount, &this->memoryDecimalPosition, result_decimal_position, &this->memorySignal, have_signal);
+}
+/******************************************************
 *        COPY OF MEMORY TWO FOR MEMORY RESERV         *
 *******************************************************/
 void CpuDiogo::copyToMemory() {
     for (int i = 0; i < 8; i++) {
         this->memory[i] = this->digitsOperand2[i];
     }
-    this->memory_decimal_position = this->decimal_position2;
-    this->memory_digits_count = this->digitsOperand2Count;
-    this->memory_signal = this->signal_digit_operand2;
+    this->memoryDecimalPosition = this->decimal_position2;
+    this->memoryDigitsCount = this->digitsOperand2Count;
+    this->memorySignal = this->signal_digit_operand2;
 }
 
 /******************************************************
 *               READ MEMORY CONTENTS                  *
 *******************************************************/
 void CpuDiogo::memoryReadClear() {
-    bool signal = this->memory_signal == NEGATIVE ? true : false;
-    showDigits(this->memory, this->memory_digits_count, this->memory_decimal_position, signal);
+    bool signal = this->memorySignal == NEGATIVE ? true : false;
+    showDigits(this->memory, this->memoryDigitsCount, this->memoryDecimalPosition, signal);
+    
     for (int i = 0; i < 8; i++) {
         this->memory[i] = ZERO;
     }
-    this->memory_decimal_position = -1;
-    this->memory_digits_count = 0;
-    this->memory_signal = POSITIVE;
+    
+    this->memoryDecimalPosition = -1;
+    this->memoryDigitsCount = 0;
+    this->memorySignal = POSITIVE;
 
 }
 
@@ -150,9 +255,9 @@ void CpuDiogo::receiveControl(Control control) {
         break;
     case MEMORY_READ_CLEAR: memoryReadClear();
         break;
-    case MEMORY_ADDITION:
+    case MEMORY_ADDITION: this->addMemory();
         break;
-    case MEMORY_SUBTRACTION:
+    case MEMORY_SUBTRACTION:this->subMemory();
         break;
     }
 }

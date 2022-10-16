@@ -13,11 +13,11 @@ private:
     Digit digitsOperand2[MAX_DIGITS];
     Signal signal_digit_operand1 = POSITIVE;
     Signal signal_digit_operand2 = POSITIVE;
-    Signal memory_signal = POSITIVE;
+    Signal memorySignal = POSITIVE;
 
     bool memory_two_free = false;
-    int memory_decimal_position = -1;
-    int memory_digits_count = 0;
+    int memoryDecimalPosition = -1;
+    int memoryDigitsCount = 0;
     int digitsOperand1Count = 0;
     int digitsOperand2Count = 0;
     int decimal_position1 = -1;
@@ -26,6 +26,8 @@ private:
 
     void reset();
     void operate();
+    void addMemory();
+    void subMemory();
     void copyToMemory();
     void memoryReadClear();
     void moveMemoryToLeft();
