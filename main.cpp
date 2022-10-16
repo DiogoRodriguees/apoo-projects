@@ -111,6 +111,13 @@ void testKeyboard(Keyboard& keyboard) {
     // keyboard.findKey('=').press();
     /* 3.8 */
 
+    keyboard.findKey('1').press();
+    keyboard.findKey('+').press();
+    keyboard.findKey('1').press();
+    keyboard.findKey('=').press();
+    keyboard.findKey('a').press();
+    keyboard.findKey('a').press();
+    keyboard.findKey('r').press();
   }
   catch (const char* exception) {
     std::cerr << exception;
@@ -141,6 +148,11 @@ int main(int argc, char** argv) {
   KeyDiogo keyMultiplication('*', MULTIPLICATION);
   KeyDiogo keyEqual('=', EQUAL);
   KeyDiogo keyDecimalSeparator('.', DECIMAL_SEPARATOR);
+  
+  KeyDiogo keyOff('o', OFF);
+  KeyDiogo KeyMemorySub('s', MEMORY_SUBTRACTION);
+  KeyDiogo KeyMemoryAdd('a', MEMORY_ADDITION);
+  KeyDiogo KeyMemoryReadClear('r', MEMORY_READ_CLEAR);
 
   /* Fase de construção/ligação */
   c1.setDisplay(d1);
@@ -163,11 +175,15 @@ int main(int argc, char** argv) {
   kb1.addKey(keyMultiplication);
   kb1.addKey(keyEqual);
   kb1.addKey(keyDecimalSeparator);
+  kb1.addKey(keyOff);
+  kb1.addKey(KeyMemorySub);
+  kb1.addKey(KeyMemoryAdd);
+  kb1.addKey(KeyMemoryReadClear);
 
   // for (int i = 1;i < argc; i++) kb1.findKey(*argv[i]).press();
   
   /* Fase de testes */
   // testDisplay(d1);
   // testCpu(c1);
-  // testKeyboard(kb1);
+  testKeyboard(kb1);
 }

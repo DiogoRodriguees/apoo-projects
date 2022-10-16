@@ -8,7 +8,7 @@ private:
     Display* display;
     Operation operation = NOOP;
 
-    Digit memory[MAX_DIGITS];
+    Digit memory[MAX_DIGITS] = { ZERO, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO};
     Digit digitsOperand1[MAX_DIGITS];
     Digit digitsOperand2[MAX_DIGITS];
     Signal signal_digit_operand1 = POSITIVE;

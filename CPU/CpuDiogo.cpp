@@ -19,6 +19,26 @@ void CpuDiogo::moveMemoryToLeft() {
 }
 
 /******************************************************
+*         SEARCH DECIMAL POSITION FROM RESULT         *
+*******************************************************/
+int searchDecimalPosition(float number) {
+    int part_inteira = number;
+    int count = -1;
+
+    if ((number - part_inteira) <= 0)  return -1;
+
+    if (number > 0 && number < 1)  return count + 1;
+
+    while (part_inteira > 0) {
+        count++;
+        part_inteira /= 10;
+    }
+
+    return count;
+}
+
+
+/******************************************************
 *                  ADCTION MEMORY                     *
 *******************************************************/
 void CpuDiogo::addMemory() {
@@ -369,24 +389,6 @@ void CpuDiogo::convertToDigit(int size_array, int* array, Digit* memory, int* co
 
 }
 
-/******************************************************
-*         SEARCH DECIMAL POSITION FROM RESULT         *
-*******************************************************/
-int searchDecimalPosition(float number) {
-    int part_inteira = number;
-    int count = -1;
-
-    if ((number - part_inteira) <= 0)  return -1;
-
-    if (number > 0 && number < 1)  return count + 1;
-
-    while (part_inteira > 0) {
-        count++;
-        part_inteira /= 10;
-    }
-
-    return count;
-}
 
 /******************************************************
 *                 MAKE OPERATION                      *
@@ -452,7 +454,7 @@ void CpuDiogo::operate() {
     if (this->count_equal <= 1) moveMemoryToLeft();
     convertToDigit(i, array_with_result, this->digitsOperand2, &this->digitsOperand2Count, &this->decimal_position2, result_decimal_position, &this->signal_digit_operand2, have_signal);
     showDigits(this->digitsOperand2, this->digitsOperand2Count, this->decimal_position2, have_signal);
-    copyToMemory();
+    // copyToMemory();
 
     // std::cout << "\nmemory_one: " << memory_one;
     // std::cout << "\nmemory_two: " << memory_two;
