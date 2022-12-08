@@ -2,5 +2,5 @@
 
 class ContratoDAO{
     public:
-    Contrato create();
+    Contrato* create();
 };
