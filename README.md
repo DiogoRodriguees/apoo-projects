@@ -3,8 +3,5 @@ Repositorio do projeto GymAdmin realizado na desciplina de APOO (Analise e proje
 
 ## Como executar
 No prompt de comando, digite:
-### Para linux
-- make
-
-### Para windows
-- mingw32-make
+- make, para linux
+- mingw32-make, para windows
