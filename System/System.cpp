@@ -1,5 +1,4 @@
 #include "System.hpp"
-#include "../ContratoCtrl/ContratoCtrl.hpp"
 #include <iostream>
 
 void System::BootSystem()
@@ -42,12 +41,12 @@ void System::ContratarFuncionario()
     system(CLEAR_TERMINAL);
     ContratoCtrl contratoCtrl;
 
-    contratoCtrl.IniciarContrato();
+    int cpf;
+    contratoCtrl.IniciarContrato(cpf);
 
     int inicio, fim;
     contratoCtrl.DefinirPeriodoDoContrato(inicio, fim);
 
-    int cpf;
     Professor professor;
     contratoCtrl.InserirProfessor(&professor, cpf);
 

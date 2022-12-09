@@ -1,5 +1,6 @@
-#include "../Professor/Professor.h"
+#include "../Professor/Professor.hpp"
 
 class ProfessorDAO{
-    Professor *retrive(int); // parametro int representando CPF do professor
+    public:
+    Professor *Retrive(int); // parametro int representando CPF do professor
 };

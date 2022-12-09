@@ -1,4 +1,8 @@
+#pragma once
+
 #include "../ContratoDAO/ContratoDAO.hpp"
+#include "../Contrato/Contrato.hpp"
+#include "../ProfessorDAO/ProfessorDAO.hpp"
 
 #define CLEAR_TERMINAL "clear"
 class ContratoCtrl{
@@ -9,7 +13,7 @@ public:
     ContratoCtrl();
     void SetContratoCorrente(Contrato *);
     Contrato *GetContratoCorrente();
-    void IniciarContrato();
+    void IniciarContrato(int);
     void DefinirPeriodoDoContrato(char, char);
     void Confirmar();
     void InserirProfessor(Professor *, int);

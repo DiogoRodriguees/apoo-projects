@@ -1,3 +1,6 @@
+#pragma once
+#include "../ContratoCtrl/ContratoCtrl.hpp"
+
 class System{
 
 public:
