@@ -1,8 +1,11 @@
 #include "ContratoCtrl.hpp"
 #include <iostream>
 
-void ContratoCtrl::IniciarContrato(int cpf){
+ContratoCtrl::ContratoCtrl(){
+}
 
+void ContratoCtrl::IniciarContrato(int cpf){
+    // Contrato *contrato = this->contratoDAO.Create();
 }
 
 void ContratoCtrl::DefinirPeriodoDoContrato(int periodoInicio, int periodoTermino){
