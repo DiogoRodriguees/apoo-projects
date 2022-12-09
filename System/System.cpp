@@ -44,7 +44,7 @@ void System::ContratarFuncionario()
     int cpf;
     contratoCtrl.IniciarContrato(cpf);
 
-    int inicio, fim;
+    char inicio[10], fim[10];
     contratoCtrl.DefinirPeriodoDoContrato(inicio, fim);
 
     Professor professor;

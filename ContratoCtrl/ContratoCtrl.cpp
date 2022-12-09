@@ -16,7 +16,7 @@ void ContratoCtrl::IniciarContrato(int cpf){
     Professor *professor = professorDAO->Retrive(cpf);
 }
 
-void ContratoCtrl::DefinirPeriodoDoContrato(char periodoInicio, char periodoTermino){
+void ContratoCtrl::DefinirPeriodoDoContrato(char*periodoInicio, char*periodoTermino){
     this->contrato->SetPeriodoDeInicio(periodoInicio);
     this->contrato->SetPeriodoDeTermino(periodoTermino);
 }
@@ -26,8 +26,8 @@ void ContratoCtrl::InserirProfessor(Professor* professor, int cpf){
 }
 
 void ContratoCtrl::Confirmar(){
-    // std::cout << this->contrato->GetPeriodoDeInicio() << "\n";
-    // std::cout << this->contrato->GetPeriodoDeTermino() << "\n";
+    std::cout << this->contrato->GetPeriodoDeInicio() << "\n";
+    std::cout << this->contrato->GetPeriodoDeTermino() << "\n";
     std::cout << "\nFinzalizar contrato? (s)sim (n)nao ";
     char confirma;
     std::cin >> confirma;

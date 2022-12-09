@@ -1,12 +1,12 @@
 #pragma once
 #include "../Professor/Professor.hpp"
 class Contrato{
-    char dataInicio[8];
-    char dataTermino[8];
+    char dataInicio[10];
+    char dataTermino[10];
 
 public:
-    void SetPeriodoDeInicio(char);
-    void SetPeriodoDeTermino(char);
+    void SetPeriodoDeInicio(char*);
+    void SetPeriodoDeTermino(char*);
     char* GetPeriodoDeInicio();
     char* GetPeriodoDeTermino();
     void SetProfessor(Professor *);

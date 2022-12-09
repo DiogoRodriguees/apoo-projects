@@ -7,13 +7,15 @@ class Professor{
     bool inativo;
 
 public:
-    void getProfessor();
     void SetNome(char);
-    void SetInativo(bool);
-    void SetCPF(int);
-    void SetSalario(float);
     char* GetNome();
-    char GetInativo();
+
+    void SetCPF(int);
     int GetCPF();
+
+    void SetInativo(bool);
+    char GetInativo();
+
+    void SetSalario(float);
     float GetSalario();
 };

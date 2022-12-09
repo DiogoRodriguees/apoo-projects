@@ -14,7 +14,7 @@ public:
     void SetContratoCorrente(Contrato *);
     Contrato *GetContratoCorrente();
     void IniciarContrato(int);
-    void DefinirPeriodoDoContrato(char, char);
+    void DefinirPeriodoDoContrato(char*, char*);
     void Confirmar();
     void InserirProfessor(Professor *, int);
 };

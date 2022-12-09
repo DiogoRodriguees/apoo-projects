@@ -1,8 +1,6 @@
 #include "Professor.hpp"
 
-void Professor::getProfessor(){
-    
-}
+
 
 char* Professor::GetNome(){
     return this->nome;
