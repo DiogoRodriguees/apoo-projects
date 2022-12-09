@@ -2,8 +2,6 @@
 #include "../ContratoCtrl/ContratoCtrl.hpp"
 #include <iostream>
 
-
-#define CLEAR_TERMINAL "clear"
 void System::BootSystem()
 {
     bool systemLoad = true;
@@ -44,14 +42,14 @@ void System::ContratarFuncionario()
     system(CLEAR_TERMINAL);
     ContratoCtrl contratoCtrl;
 
-    int cpf;
-    contratoCtrl.IniciarContrato(cpf);
+    contratoCtrl.IniciarContrato();
 
     int inicio, fim;
     contratoCtrl.DefinirPeriodoDoContrato(inicio, fim);
 
+    int cpf;
     Professor professor;
-    contratoCtrl.InserirProfessor(&professor);
+    contratoCtrl.InserirProfessor(&professor, cpf);
 
     contratoCtrl.Confirmar();
 }
