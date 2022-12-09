@@ -7,5 +7,5 @@ class ContratoCtrl{
     void SetContratoCorrente();
     Contrato* GetContratoCorrente();
     void IniciarContrato(int);
-    void DefinirPeriodoDoContrato();
+    void DefinirPeriodoDoContrato(int, int);
 };

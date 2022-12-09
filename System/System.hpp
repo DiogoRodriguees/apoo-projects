@@ -2,7 +2,7 @@ class System{
 
 public:
     void IniciarContratoCtrl();
-    void FinalizarContratoCtrl();
+    void ConfirmarContratoCtrl();
     void BootSystem();
     void SetContratoCorrente();
 };
