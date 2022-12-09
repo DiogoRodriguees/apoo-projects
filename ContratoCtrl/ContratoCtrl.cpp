@@ -10,6 +10,8 @@ void ContratoCtrl::DefinirPeriodoDoContrato(int periodoInicio, int periodoTermin
     this->contrato->SetPeriodoDeTermino(periodoTermino);
 }
 
-void ContratoCtrl::Confirmar(Contrato* contrato){
+void ContratoCtrl::Confirmar(){
     
 }
+
+void ContratoCtrl::InserirProfessor(Professor*){}

@@ -9,7 +9,7 @@ void System::BootSystem()
     while (systemLoad)
     {
         system("cls");
-        std::cout << "\n\nBem Vindo\n";
+        std::cout << "Bem Vindo\n";
         std::cout << "O que voce deseja?\n";
         std::cout << "1. Matricular Aluno\n";
         std::cout << "2. Criar Turma\n";
@@ -33,6 +33,7 @@ void System::BootSystem()
             break;
         }
     }
+    system("cls");
 }
 
 
@@ -42,24 +43,15 @@ void System::ContratarFuncionario()
     ContratoCtrl contratoCtrl;
 
     int cpf;
-    std::cout << "Informe o CPF do Professor a ser contratado: ";
-    std::cin >> cpf;
     contratoCtrl.IniciarContrato(cpf);
 
     int inicio, fim;
-    std::cout << "Informe a data de inicio: ";
-    std::cin >> inicio;
-    std::cout << "Informe a  data de Termino: ";
-    std::cin >> fim;
     contratoCtrl.DefinirPeriodoDoContrato(inicio, fim);
 
-    int formacoes[5];
-    std::cout << "Informe as formacoes do professor: \n";
-    std::cout << "1. Boxe\n";
-    std::cout << "2. Jiu Jitsu\n";
-    std::cout << "3. Muay Thai\n";
-    std::cin >> formacoes[0];
+    Professor professor;
+    contratoCtrl.InserirProfessor(&professor);
 
+    contratoCtrl.Confirmar();
 }
 
 void System::CriarTurma(){}

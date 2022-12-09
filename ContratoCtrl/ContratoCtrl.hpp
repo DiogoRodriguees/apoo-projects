@@ -8,6 +8,6 @@ class ContratoCtrl{
     Contrato* GetContratoCorrente();
     void IniciarContrato(int);
     void DefinirPeriodoDoContrato(int, int);
-    void Confirmar(Contrato*);
-    int MsgIniciarContrato(int*);
+    void Confirmar();
+    void InserirProfessor(Professor*);
 };

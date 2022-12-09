@@ -1,4 +1,4 @@
-#include "../Professor/Professor.h"
+#include "../Professor/Professor.hpp"
 
 class Contrato{
     public:
