@@ -21,7 +21,9 @@ void ContratoCtrl::InserirProfessor(Professor* professor){
 }
 
 void ContratoCtrl::SetContratoCorrente(Contrato *){}
-Contrato *ContratoCtrl::GetContratoCorrente(){}
+Contrato *ContratoCtrl::GetContratoCorrente(){
+    return this->contrato;
+}
 
 void ContratoCtrl::Confirmar(){
     
