@@ -4,5 +4,5 @@ class Contrato{
     public:
         void SetPeriodoDeInicio(int);
         void SetPeriodoDeTermino(int);
-        void SetProfessor(Professor);
+        void SetProfessor(Professor*);
 };

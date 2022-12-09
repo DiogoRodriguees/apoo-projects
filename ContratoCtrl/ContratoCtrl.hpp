@@ -1,4 +1,3 @@
-#include "../Contrato/Contrato.hpp"
 #include "../ContratoDAO/ContratoDAO.hpp"
 
 class ContratoCtrl{
