@@ -20,50 +20,47 @@ void System::BootSystem()
         std::cin >> opcao;
         switch (opcao)
         {
-            case '1':
+            case '1': this->MatricularAluno();
             break;
-            case '2':
+
+            case '2': this->CriarTurma();
             break;
-            case '3':
-                system("cls");
-                this->IniciarContratoCtrl();
-                this->ConfirmarContratoCtrl();
+
+            case '3': this->ContratarFuncionario();
             break;
-        case '0':
-            systemLoad = false;
+
+            case '0': systemLoad = false;
+            break;
         }
     }
 }
 
-void System::IniciarContratoCtrl()
+
+void System::ContratarFuncionario()
 {
+    system("cls");
     ContratoCtrl contratoCtrl;
 
     int cpf;
-    std::cout << "Informe o CPF do Professor a ser contratado\n";
+    std::cout << "Informe o CPF do Professor a ser contratado: ";
     std::cin >> cpf;
     contratoCtrl.IniciarContrato(cpf);
 
     int inicio, fim;
-    std::cout << "Informe a data de inicio:\n";
+    std::cout << "Informe a data de inicio: ";
     std::cin >> inicio;
-    std::cout << "Informe a  data de Termino:\n";
+    std::cout << "Informe a  data de Termino: ";
     std::cin >> fim;
-
     contratoCtrl.DefinirPeriodoDoContrato(inicio, fim);
+
+    int formacoes[5];
+    std::cout << "Informe as formacoes do professor: \n";
+    std::cout << "1. Boxe\n";
+    std::cout << "2. Jiu Jitsu\n";
+    std::cout << "3. Muay Thai\n";
+    std::cin >> formacoes[0];
+
 }
 
-void System::ConfirmarContratoCtrl()
-{
-    std::cout << "\n\nNome: Lucio\n";
-    std::cout << "CPF: 123\n";
-    std::cout << "Formacoes: Boxe, Judo.\n";
-    std::cout << "Data de inicio do contrato: 23/08/2022\n";
-    std::cout << "Data de Termino do contrato: 23/09/2022\n\n";
-
-    char finalizar;
-    std::cout << "Deseja confirmar as informacoes do contrato? (s)sim (n)nao\n";
-    std::cin >> finalizar;
-    system("cls");
-    std::cout << "Contrato Finalizado com suceso";
-}
+void System::CriarTurma(){}
+void System::MatricularAluno(){}

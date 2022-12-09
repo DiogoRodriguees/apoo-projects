@@ -4,8 +4,10 @@ class ContratoCtrl{
     Contrato* contrato;
 
     public:
-    void SetContratoCorrente();
+    void SetContratoCorrente(Contrato*);
     Contrato* GetContratoCorrente();
     void IniciarContrato(int);
     void DefinirPeriodoDoContrato(int, int);
+    void Confirmar(Contrato*);
+    int MsgIniciarContrato(int*);
 };

@@ -1,8 +1,8 @@
 class System{
 
 public:
-    void IniciarContratoCtrl();
-    void ConfirmarContratoCtrl();
+    void ContratarFuncionario();
+    void MatricularAluno();
+    void CriarTurma();
     void BootSystem();
-    void SetContratoCorrente();
 };
