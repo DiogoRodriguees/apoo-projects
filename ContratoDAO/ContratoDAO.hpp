@@ -1,5 +1,6 @@
+#include "../Contrato/Contrato.hpp"
 
 class ContratoDAO{
     public:
-    Contrato* create();
+    Contrato* Create();
 };
