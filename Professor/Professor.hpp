@@ -1,5 +1,8 @@
 
 class Professor{
-    public:
+    char nome[25];
+
+
+public:
     void getProfessor();
 };

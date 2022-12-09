@@ -73,6 +73,9 @@
         "fstream": "cpp",
         "iosfwd": "cpp",
         "limits": "cpp",
-        "sstream": "cpp"
+        "sstream": "cpp",
+        "bit": "cpp",
+        "concepts": "cpp",
+        "numbers": "cpp"
     }
 }

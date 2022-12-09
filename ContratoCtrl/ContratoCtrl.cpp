@@ -10,7 +10,7 @@ void ContratoCtrl::IniciarContrato(int cpf){
     this->SetContratoCorrente(contrato);
 }
 
-void ContratoCtrl::DefinirPeriodoDoContrato(int periodoInicio, int periodoTermino){
+void ContratoCtrl::DefinirPeriodoDoContrato(char periodoInicio, char periodoTermino){
     this->contrato->SetPeriodoDeInicio(periodoInicio);
     this->contrato->SetPeriodoDeTermino(periodoTermino);
 }
@@ -20,13 +20,14 @@ void ContratoCtrl::InserirProfessor(Professor* professor){
     contrato->SetProfessor(professor);
 }
 
+
+void ContratoCtrl::Confirmar(){
+    Contrato* contrato =  this->GetContratoCorrente();
+    std::cout << contrato->GetPeriodoDeInicio();
+    std::cout << contrato->GetPeriodoDeTermino();
+}
+
 void ContratoCtrl::SetContratoCorrente(Contrato *){}
 Contrato *ContratoCtrl::GetContratoCorrente(){
     return this->contrato;
-}
-
-void ContratoCtrl::Confirmar(){
-    
-
-
 }

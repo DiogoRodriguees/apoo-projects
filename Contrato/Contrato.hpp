@@ -1,8 +1,13 @@
 #include "../Professor/Professor.hpp"
 
 class Contrato{
-    public:
-        void SetPeriodoDeInicio(int);
-        void SetPeriodoDeTermino(int);
-        void SetProfessor(Professor*);
+    char dataInicio[8];
+    char dataTermino[8];
+
+public:
+    void SetPeriodoDeInicio(char);
+    void SetPeriodoDeTermino(char);
+    char GetPeriodoDeInicio();
+    char GetPeriodoDeTermino();
+    void SetProfessor(Professor *);
 };
