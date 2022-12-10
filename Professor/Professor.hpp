@@ -1,5 +1,5 @@
 #pragma once
-
+#include <string.h>
 class Professor{
     char nome[25];
     int cpf;
@@ -7,7 +7,9 @@ class Professor{
     bool inativo;
 
 public:
-    void SetNome(char);
+    Professor();
+
+    void SetNome(char*);
     char* GetNome();
 
     void SetCPF(int);

@@ -10,10 +10,11 @@ ContratoCtrl::ContratoCtrl(){
 
 void ContratoCtrl::IniciarContrato(int cpf){
     Contrato *contrato = this->contratoDAO->Create();
-    this->SetContratoCorrente(contrato);
 
     ProfessorDAO *professorDAO = new ProfessorDAO;
     Professor *professor = professorDAO->Retrive(cpf);
+    contrato->SetProfessor(professor);
+    this->SetContratoCorrente(contrato);
 }
 
 void ContratoCtrl::DefinirPeriodoDoContrato(char*periodoInicio, char*periodoTermino){
@@ -30,8 +31,9 @@ void ContratoCtrl::Confirmar(){
     std::cout << "Informacoes do Contrato\n";
     std::cout << "Data de Inicio : " << this->contrato->GetPeriodoDeInicio() << "\n";
     std::cout << "Data de Termino: " << this->contrato->GetPeriodoDeTermino() << "\n";
-    std::cout << "Nome do Professor: " << this->contrato->GetProfessor()->GetNome()<< "\n";
-    std::cout << "\nFinzalizar contrato? (s)sim (n)nao ";
+    char* nome = this->contrato->GetProfessor()->GetNome() ;
+    std::cout << "Nome do Professor: " << nome << "\n";
+    std::cout << "\nConfirmar informacoes do contrato? (s)sim (n)nao ";
     
     char confirma;
     std::cin >> confirma;
