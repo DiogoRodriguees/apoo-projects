@@ -6,15 +6,16 @@
 
 ContratoCtrl::ContratoCtrl(){
     this->contratoDAO = new ContratoDAO;
+    this->professorDAO = new ProfessorDAO;
 }
 
 void ContratoCtrl::IniciarContrato(int cpf){
     Contrato *contrato = this->contratoDAO->Create();
 
-    ProfessorDAO *professorDAO = new ProfessorDAO;
-    Professor *professor = professorDAO->Retrive(cpf);
-    contrato->SetProfessor(professor);
+    Professor *professor = this->professorDAO->Retrive(cpf);
     this->SetContratoCorrente(contrato);
+    this->contrato->SetProfessor(professor);
+
 }
 
 void ContratoCtrl::DefinirPeriodoDoContrato(char*periodoInicio, char*periodoTermino){
@@ -23,23 +24,26 @@ void ContratoCtrl::DefinirPeriodoDoContrato(char*periodoInicio, char*periodoTerm
     this->contrato->SetPeriodoDeTermino(periodoTermino);
 }
 
-void ContratoCtrl::InserirProfessor(Professor* professor, int cpf){
-    this->contrato->SetProfessor(professor);
+void ContratoCtrl::InserirModalidadesDoProfessor(Modalidade* modalidade, int cpf){
+
 }
 
 void ContratoCtrl::Confirmar(){
     std::cout << "Informacoes do Contrato\n";
     std::cout << "Data de Inicio : " << this->contrato->GetPeriodoDeInicio() << "\n";
     std::cout << "Data de Termino: " << this->contrato->GetPeriodoDeTermino() << "\n";
-    char* nome = this->contrato->GetProfessor()->GetNome() ;
-    std::cout << "Nome do Professor: " << nome << "\n";
+    std::cout << "Nome do Professor   : " << this->contrato->GetProfessor()->GetNome()  << "\n";
+    std::cout << "Salario do Professor: " << this->contrato->GetProfessor()->GetSalario()  << "\n";
     std::cout << "\nConfirmar informacoes do contrato? (s)sim (n)nao ";
     
     char confirma;
     std::cin >> confirma;
 }
 
-void ContratoCtrl::SetContratoCorrente(Contrato *contrato){}
+void ContratoCtrl::SetContratoCorrente(Contrato *contrato){
+    this->contrato = contrato;
+}
+
 Contrato *ContratoCtrl::GetContratoCorrente(){
     return this->contrato;
 }

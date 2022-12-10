@@ -7,7 +7,11 @@ Contrato* ContratoDAO::Create(){
     this->novo++;
     return contrato;
 }
-Contrato* ContratoDAO::Retrive(){}
+
+Contrato* ContratoDAO::Retrive(){
+    Contrato *contrato = new Contrato;
+    return contrato;
+}
 
 void ContratoDAO::Delete(Contrato*){}
 
