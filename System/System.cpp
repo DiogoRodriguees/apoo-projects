@@ -2,6 +2,10 @@
 #include <iostream>
 #include <stdio.h>
 
+System::System(){
+    this->contratoCtrl = new ContratoCtrl;
+}
+
 void System::BootSystem(){
     bool systemLoad = true;
     while (systemLoad)
@@ -39,20 +43,18 @@ void System::ContratarFuncionario()
 {
     system(CLEAR_TERMINAL);
     std::cout << "Preenca os campos do contrato....\n";
-    ContratoCtrl* contratoCtrl = new ContratoCtrl;
 
-    int cpf;
-    int i, j =0;
+    int cpf,i ,j = 0;
     std::cout << "CPF: ";
     std::cin >> cpf;
-    Modalidade** modalidades = contratoCtrl->IniciarContrato(cpf, &i);
+    Modalidade** modalidades = this->contratoCtrl->IniciarContrato(cpf, &i);
 
     char inicio[10], fim[10];
     std::cout << "Data de Inicio: ";
     std::cin >> inicio;
     std::cout << "Data de Termino: ";
     std::cin >> fim;
-    contratoCtrl->DefinirPeriodoDoContrato(inicio, fim);
+    this->contratoCtrl->DefinirPeriodoDoContrato(inicio, fim);
 
     std::cout << "Informe as modalidade do contrato: \n";
     while(j < i){
@@ -62,10 +64,10 @@ void System::ContratarFuncionario()
 
     std::cin >> cpf;
     Modalidade *modalidade = cpf == 1 ? modalidades[0] : modalidades[1];
-    contratoCtrl->InserirModalidadesDoProfessor(modalidade);
+    this->contratoCtrl->InserirModalidadesDoProfessor(modalidade);
 
     system(CLEAR_TERMINAL);
-    contratoCtrl->Confirmar();
+    this->contratoCtrl->Confirmar();
 }
 
 void System::CriarTurma(){}
