@@ -7,6 +7,7 @@ class Contrato{
     char dataInicio[10];
     char dataTermino[10];
     Turma *turma;
+    Modalidade *modalidade;
 
 public:
     void SetPeriodoDeInicio(char*);
@@ -15,4 +16,6 @@ public:
     char* GetPeriodoDeTermino();
     void SetProfessor(Professor *);
     Professor * GetProfessor();
+    Modalidade *GetModalidade();
+    void SetModalidade(Modalidade *);
 };
