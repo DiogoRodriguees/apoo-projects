@@ -1,10 +1,13 @@
 #pragma once
 #include <string.h>
+#include "../Modalidade/Modalidade.hpp"
+
 class Professor{
     char nome[25];
     int cpf;
     float salario;
     bool inativo;
+    Modalidade modalidades[15];
 
 public:
     Professor();

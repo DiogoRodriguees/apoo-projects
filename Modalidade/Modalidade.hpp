@@ -1,4 +1,6 @@
 class Modalidade{
-    public:
-        Modalidade *GetModalidades();
+    char nome;
+
+public:
+    char* GetModalidade();
 };
