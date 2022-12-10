@@ -26,7 +26,7 @@ void ContratoCtrl::DefinirPeriodoDoContrato(char*periodoInicio, char*periodoTerm
 }
 
 void ContratoCtrl::InserirModalidadesDoProfessor(Modalidade* modalidade){
-
+    this->contrato->SetModalidade(modalidade);
 }
 
 void ContratoCtrl::Confirmar(){
