@@ -1,10 +1,8 @@
 #include "System.hpp"
 #include <iostream>
 
-void System::BootSystem()
-{
+void System::BootSystem(){
     bool systemLoad = true;
-
     while (systemLoad)
     {
         system(CLEAR_TERMINAL);
@@ -56,11 +54,11 @@ void System::ContratarFuncionario()
     std::cin >> fim;
     contratoCtrl->DefinirPeriodoDoContrato(inicio, fim);
 
-std::cout << "Informe as modalidade do contrato: \n";
+    std::cout << "Informe as modalidade do contrato: \n";
     std::cout << "1. Boxe\n";
     std::cout << "2. Judo\n";
     std::cin >> cpf;
-    Modalidade *modalidade;
+    Modalidade *modalidade = cpf == 1 ? modalidades[0] : modalidades[1];
     contratoCtrl->InserirModalidadesDoProfessor(modalidade);
 
     system(CLEAR_TERMINAL);
