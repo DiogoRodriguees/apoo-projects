@@ -61,6 +61,7 @@ void System::ContratarFuncionario()
     std::cout << "3. Judo\n";
     contratoCtrl->InserirModalidadesDoProfessor(modalidades, cpf);
 
+    system(CLEAR_TERMINAL);
     contratoCtrl->Confirmar();
 }
 

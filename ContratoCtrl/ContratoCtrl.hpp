@@ -3,7 +3,6 @@
 #include "../ContratoDAO/ContratoDAO.hpp"
 #include "../Contrato/Contrato.hpp"
 #include "../ProfessorDAO/ProfessorDAO.hpp"
-#include "../Modalidade/Modalidade.hpp"
 
 #define CLEAR_TERMINAL "clear"
 class ContratoCtrl{
