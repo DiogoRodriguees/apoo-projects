@@ -7,7 +7,12 @@ Professor* ProfessorDAO::Retrive(int cpf){
     professor->SetSalario(15000);
     professor->SetInativo(false);
     professor->SetCPF(123);
-    
+    Modalidade *modalidade1 = new Modalidade;
+    Modalidade *modalidade2 = new Modalidade;
+    modalidade1->SetNome("BOXE");
+    modalidade2->SetNome("JUDO");
+    professor->SetModalidade(modalidade1);
+    professor->SetModalidade(modalidade2);
 
     return professor;
 }

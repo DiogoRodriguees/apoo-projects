@@ -9,18 +9,17 @@ ContratoCtrl::ContratoCtrl(){
     this->modalidadeDAO = new ModalidadeDAO;
 }
 
-Modalidade** ContratoCtrl::IniciarContrato(int cpf){
+Modalidade** ContratoCtrl::IniciarContrato(int cpf, int *quantidadeDeModalidades){
     Contrato *contrato = this->contratoDAO->Create();
 
     Professor *professor = this->professorDAO->Retrive(cpf);
     this->SetContratoCorrente(contrato);
     this->contrato->SetProfessor(professor);
-
+    *quantidadeDeModalidades = professor->GetQuantidadeModalidade();
     return this->modalidadeDAO->GetModalidades();
 }
 
 void ContratoCtrl::DefinirPeriodoDoContrato(char*periodoInicio, char*periodoTermino){
-    system(CLEAR_TERMINAL);
     this->contrato->SetPeriodoDeInicio(periodoInicio);
     this->contrato->SetPeriodoDeTermino(periodoTermino);
 }

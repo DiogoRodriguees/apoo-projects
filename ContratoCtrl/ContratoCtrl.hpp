@@ -15,7 +15,7 @@ public:
     ContratoCtrl();
     void SetContratoCorrente(Contrato *);
     Contrato *GetContratoCorrente();
-    Modalidade** IniciarContrato(int);
+    Modalidade** IniciarContrato(int, int*);
     void DefinirPeriodoDoContrato(char*, char*);
     void Confirmar();
     void InserirModalidadesDoProfessor(Modalidade *); // alterar parametro 'professor' para 'modalidade'

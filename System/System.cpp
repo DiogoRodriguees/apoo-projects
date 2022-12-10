@@ -1,5 +1,6 @@
 #include "System.hpp"
 #include <iostream>
+#include <stdio.h>
 
 void System::BootSystem(){
     bool systemLoad = true;
@@ -41,11 +42,10 @@ void System::ContratarFuncionario()
     ContratoCtrl* contratoCtrl = new ContratoCtrl;
 
     int cpf;
+    int i, j =0;
     std::cout << "CPF: ";
     std::cin >> cpf;
-    Modalidade** modalidades = contratoCtrl->IniciarContrato(cpf);
-
-    
+    Modalidade** modalidades = contratoCtrl->IniciarContrato(cpf, &i);
 
     char inicio[10], fim[10];
     std::cout << "Data de Inicio: ";
@@ -55,8 +55,10 @@ void System::ContratarFuncionario()
     contratoCtrl->DefinirPeriodoDoContrato(inicio, fim);
 
     std::cout << "Informe as modalidade do contrato: \n";
-    std::cout << "1. " << modalidades[0]->GetNome() << "\n";
-    std::cout << "2. " << modalidades[1]->GetNome() << "\n";
+    while(j < i){
+        std::cout<< j + 1 << ". "<< modalidades[j]->GetNome() << "\n";
+        j++;
+    }
 
     std::cin >> cpf;
     Modalidade *modalidade = cpf == 1 ? modalidades[0] : modalidades[1];
