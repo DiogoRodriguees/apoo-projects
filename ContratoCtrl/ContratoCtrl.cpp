@@ -29,7 +29,8 @@ void ContratoCtrl::InserirProfessor(Professor* professor, int cpf){
 void ContratoCtrl::Confirmar(){
     std::cout << "Informacoes do Contrato\n";
     std::cout << "Data de Inicio : " << this->contrato->GetPeriodoDeInicio() << "\n";
-    std::cout << "Data de Termino: " <<this->contrato->GetPeriodoDeTermino() << "\n";
+    std::cout << "Data de Termino: " << this->contrato->GetPeriodoDeTermino() << "\n";
+    std::cout << "Nome do Professor: " << this->contrato->GetProfessor()->GetNome()<< "\n";
     std::cout << "\nFinzalizar contrato? (s)sim (n)nao ";
     
     char confirma;

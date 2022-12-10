@@ -2,6 +2,7 @@
 #include "../Professor/Professor.hpp"
 #include <string.h>
 class Contrato{
+    Professor *professor;
     char dataInicio[10];
     char dataTermino[10];
 
@@ -11,4 +12,5 @@ public:
     char* GetPeriodoDeInicio();
     char* GetPeriodoDeTermino();
     void SetProfessor(Professor *);
+    Professor * GetProfessor();
 };

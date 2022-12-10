@@ -10,8 +10,8 @@ void System::BootSystem()
         system(CLEAR_TERMINAL);
         std::cout << "Bem Vindo\n";
         std::cout << "O que voce deseja?\n";
-        std::cout << "1. Matricular Aluno\n";
-        std::cout << "2. Criar Turma\n";
+        std::cout << "1. Criar Turma\n";
+        std::cout << "2. Matricular Aluno\n";
         std::cout << "3. Contratar Funcionario\n";
         std::cout << "4. Sair\n";
 
@@ -19,10 +19,10 @@ void System::BootSystem()
         std::cin >> opcao;
         switch (opcao)
         {
-            case '1': this->MatricularAluno();
+            case '1': this->CriarTurma();
             break;
 
-            case '2': this->CriarTurma();
+            case '2': this->MatricularAluno();
             break;
 
             case '3': this->ContratarFuncionario();

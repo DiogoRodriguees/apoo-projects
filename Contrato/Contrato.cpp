@@ -15,4 +15,10 @@ char* Contrato::GetPeriodoDeTermino(){
     return this->dataInicio;
 }
 
-void Contrato::SetProfessor(Professor* professor){}
+void Contrato::SetProfessor(Professor* professor){
+    this->professor = professor;
+}
+
+Professor*  Contrato::GetProfessor(){
+    return this->professor;
+}
