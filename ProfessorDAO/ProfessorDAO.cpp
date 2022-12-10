@@ -7,6 +7,7 @@ Professor* ProfessorDAO::Retrive(int cpf){
     professor->SetSalario(15000);
     professor->SetInativo(false);
     professor->SetCPF(123);
+    
 
     return professor;
 }

@@ -2,7 +2,7 @@
 
 
 Professor::Professor(){
-
+    this->nova = 0;
 }
 
 char* Professor::GetNome(){
@@ -31,4 +31,16 @@ void Professor::SetInativo(bool inativo_recebido){
 
 void Professor::SetSalario(float  salario_recebido){
     this->salario = salario_recebido;
+}
+
+void Professor::SetModalidade(Modalidade*modalidade){
+    this->modalidades[nova] = modalidade;
+}
+
+Modalidade* Professor::GetModalidade(){
+
+}
+
+Modalidade** Professor::GetModalidades(){
+    return this->modalidades;
 }

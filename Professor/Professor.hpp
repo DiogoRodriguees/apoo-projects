@@ -7,7 +7,8 @@ class Professor{
     int cpf;
     float salario;
     bool inativo;
-    Modalidade modalidades[15];
+    Modalidade *modalidades[15];
+    int nova;
 
 public:
     Professor();
@@ -26,5 +27,5 @@ public:
 
     void SetModalidade(Modalidade*);
     Modalidade* GetModalidade();
-    Modalidade* GetModalidades(); // reveer o tipo de retorno
+    Modalidade** GetModalidades(); // reveer o tipo de retorno
 };
