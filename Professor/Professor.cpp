@@ -2,11 +2,7 @@
 
 
 Professor::Professor(){
-    // Professor *professor = new Professor;
-    // strcpy(professor->nome, "Lucio Valentin");
-    // professor->salario = 15000;
-    // professor->inativo = false;
-    // professor->cpf = 12345678910;
+
 }
 
 char* Professor::GetNome(){

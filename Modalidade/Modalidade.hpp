@@ -1,5 +1,5 @@
 class Modalidade{
-    char nome;
+    char nome[20];
 
 public:
     char* GetModalidade();

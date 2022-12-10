@@ -23,4 +23,8 @@ public:
 
     void SetSalario(float);
     float GetSalario();
+
+    void SetModalidade(Modalidade*);
+    Modalidade* GetModalidade();
+    Modalidade* GetModalidades(); // reveer o tipo de retorno
 };
