@@ -17,6 +17,7 @@ void ContratoCtrl::IniciarContrato(int cpf){
 }
 
 void ContratoCtrl::DefinirPeriodoDoContrato(char*periodoInicio, char*periodoTermino){
+    system(CLEAR_TERMINAL);
     this->contrato->SetPeriodoDeInicio(periodoInicio);
     this->contrato->SetPeriodoDeTermino(periodoTermino);
 }
@@ -26,9 +27,10 @@ void ContratoCtrl::InserirProfessor(Professor* professor, int cpf){
 }
 
 void ContratoCtrl::Confirmar(){
-    std::cout << this->contrato->GetPeriodoDeInicio() << "\n";
-    std::cout << this->contrato->GetPeriodoDeTermino() << "\n";
+    std::cout << "Data de Inicio : "<< this->contrato->GetPeriodoDeInicio() << "\n";
+    std::cout << "Data de Termino: " <<this->contrato->GetPeriodoDeTermino() << "\n";
     std::cout << "\nFinzalizar contrato? (s)sim (n)nao ";
+    
     char confirma;
     std::cin >> confirma;
 }

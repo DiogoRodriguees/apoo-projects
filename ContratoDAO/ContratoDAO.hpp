@@ -2,6 +2,12 @@
 #include "../Contrato/Contrato.hpp"
 
 class ContratoDAO{
-    public:
+    Contrato *contratos[15];
+    int novo = 0;
+
+public:
     Contrato* Create();
+    Contrato* Retrive();
+    void Delete(Contrato*);
+    void UpDate(Contrato*);
 };
