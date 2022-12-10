@@ -1,5 +1,4 @@
 #pragma once
-#include "../Professor/Professor.hpp"
 #include "../Turma/Turma.hpp"
 
 #include <string.h>

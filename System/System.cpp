@@ -45,7 +45,9 @@ void System::ContratarFuncionario()
     int cpf;
     std::cout << "CPF: ";
     std::cin >> cpf;
-    contratoCtrl->IniciarContrato(cpf);
+    Modalidade** modalidades = contratoCtrl->IniciarContrato(cpf);
+
+    
 
     char inicio[10], fim[10];
     std::cout << "Data de Inicio: ";
@@ -54,12 +56,12 @@ void System::ContratarFuncionario()
     std::cin >> fim;
     contratoCtrl->DefinirPeriodoDoContrato(inicio, fim);
 
-    Modalidade* modalidades = new Modalidade;
-    std::cout << "Informe as modalidade do contrato: \n";
-    std::cout << "1. Boxe e Judo\n";
-    std::cout << "2. Boxe\n";
-    std::cout << "3. Judo\n";
-    contratoCtrl->InserirModalidadesDoProfessor(modalidades, cpf);
+std::cout << "Informe as modalidade do contrato: \n";
+    std::cout << "1. Boxe\n";
+    std::cout << "2. Judo\n";
+    std::cin >> cpf;
+    Modalidade *modalidade;
+    contratoCtrl->InserirModalidadesDoProfessor(modalidade);
 
     system(CLEAR_TERMINAL);
     contratoCtrl->Confirmar();

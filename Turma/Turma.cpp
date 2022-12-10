@@ -1,4 +1,8 @@
 #include "Turma.hpp"
 
-void Turma::SetModalidade(Modalidade*){}
-Modalidade* Turma::GetModalidade(char*){}
+void Turma::SetModalidade(Modalidade* modalidade){
+    this->modalidade = modalidade;
+}
+Modalidade* Turma::GetModalidade(char*){
+    return this->modalidade;
+}

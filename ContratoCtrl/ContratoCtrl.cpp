@@ -1,5 +1,4 @@
 #include "ContratoCtrl.hpp"
-#include "../Contrato/Contrato.hpp"
 
 #include <iostream>
 
@@ -7,15 +6,17 @@
 ContratoCtrl::ContratoCtrl(){
     this->contratoDAO = new ContratoDAO;
     this->professorDAO = new ProfessorDAO;
+    this->modalidadeDAO = new ModalidadeDAO;
 }
 
-void ContratoCtrl::IniciarContrato(int cpf){
+Modalidade** ContratoCtrl::IniciarContrato(int cpf){
     Contrato *contrato = this->contratoDAO->Create();
 
     Professor *professor = this->professorDAO->Retrive(cpf);
     this->SetContratoCorrente(contrato);
     this->contrato->SetProfessor(professor);
 
+    return this->modalidadeDAO->GetModalidades();
 }
 
 void ContratoCtrl::DefinirPeriodoDoContrato(char*periodoInicio, char*periodoTermino){
@@ -24,7 +25,7 @@ void ContratoCtrl::DefinirPeriodoDoContrato(char*periodoInicio, char*periodoTerm
     this->contrato->SetPeriodoDeTermino(periodoTermino);
 }
 
-void ContratoCtrl::InserirModalidadesDoProfessor(Modalidade* modalidade, int cpf){
+void ContratoCtrl::InserirModalidadesDoProfessor(Modalidade* modalidade){
 
 }
 

@@ -38,7 +38,8 @@ void Professor::SetModalidade(Modalidade*modalidade){
 }
 
 Modalidade* Professor::GetModalidade(){
-
+    /* refazer função, foi feita apenas para retirar warning do terminaç */
+    return this->modalidades[0];
 }
 
 Modalidade** Professor::GetModalidades(){

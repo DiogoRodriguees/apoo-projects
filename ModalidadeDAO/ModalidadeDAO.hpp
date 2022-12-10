@@ -1,9 +1,15 @@
-#include "../Modalidade/Modalidade.hpp"
+// #include "../Modalidade/Modalidade.hpp"
+#include "../ProfessorDAO/ProfessorDAO.hpp"
 
 class ModalidadeDAO{
-    public:
-        Modalidade* Create();
-        void Retrive(char*);
-        void Update(Modalidade*);
-        void Delete(char*);
+    Modalidade* modalidades[10];
+    int quantidadeModalidade;
+
+public:
+    ModalidadeDAO();
+    Modalidade *Create();
+    Modalidade* Retrive(char *);
+    void Update(Modalidade *);
+    void Delete(char *);
+    Modalidade **GetModalidades();
 };
