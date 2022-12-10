@@ -9,6 +9,10 @@ ModalidadeDAO::ModalidadeDAO(){
     char nome2[5] = "Judo";
     modalidade1->SetNome(nome1);
     modalidade2->SetNome(nome2);
+
+    this->modalidades[0] = modalidade1;
+    this->modalidades[1] = modalidade2;
+    this->quantidadeModalidade = 2;
 }
 
 Modalidade **ModalidadeDAO::GetModalidades()

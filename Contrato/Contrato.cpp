@@ -22,3 +22,10 @@ void Contrato::SetProfessor(Professor* professor_recebido){
 Professor*  Contrato::GetProfessor(){
     return this->professor;
 }
+
+Modalidade *Contrato::GetModalidade(){
+    return this->modalidade;
+}
+void Contrato::SetModalidade(Modalidade *modalidade){
+    this->modalidade = modalidade;
+}
