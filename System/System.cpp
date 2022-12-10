@@ -39,13 +39,18 @@ void System::BootSystem()
 void System::ContratarFuncionario()
 {
     system(CLEAR_TERMINAL);
+    std::cout << "Preenca os campos do contrato....\n";
     ContratoCtrl contratoCtrl;
 
     int cpf;
+    std::cout << "CPF: ";
+    std::cin >> cpf;
     contratoCtrl.IniciarContrato(cpf);
 
     char inicio[10], fim[10];
+    std::cout << "Data de Inicio: ";
     std::cin >> inicio;
+    std::cout << "Data de Termino: ";
     std::cin >> fim;
     contratoCtrl.DefinirPeriodoDoContrato(inicio, fim);
 
