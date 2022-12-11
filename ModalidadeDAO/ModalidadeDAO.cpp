@@ -7,12 +7,9 @@ ModalidadeDAO::ModalidadeDAO(){
     Modalidade *modalidade2 = new Modalidade;
     char nome1[5] = "Boxe";
     char nome2[5] = "Judo";
-    modalidade1->SetNome(nome1);
-    modalidade2->SetNome(nome2);
 
-    this->modalidades[0] = modalidade1;
-    this->modalidades[1] = modalidade2;
-    this->quantidadeModalidade = 2;
+    this->Create(nome1);
+    this->Create(nome2);
 }
 
 Modalidade **ModalidadeDAO::GetModalidades()
@@ -20,10 +17,12 @@ Modalidade **ModalidadeDAO::GetModalidades()
     return this->modalidades;
 }
 
-Modalidade* ModalidadeDAO::Create(){
+Modalidade* ModalidadeDAO::Create(char* nome){
     /* Adicionar modalidade ao vetor de modalidades */
 
     Modalidade *modalidade = new Modalidade;
+    modalidade->SetNome(nome);
+    this->modalidades[this->quantidadeModalidade++] = modalidade;
     return modalidade;
 }
 
