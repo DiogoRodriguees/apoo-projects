@@ -36,6 +36,7 @@ void ContratoCtrl::InserirModalidadesDoProfessor(Modalidade* modalidade){
 }
 
 void ContratoCtrl::Confirmar(){
+    system(CLEAR_TERMINAL);
     std::cout << "Informacoes do Contrato\n";
     std::cout << "* Data de Inicio : " << this->contrato->GetPeriodoDeInicio() << "\n";
     std::cout << "* Data de Termino: " << this->contrato->GetPeriodoDeTermino() << "\n";

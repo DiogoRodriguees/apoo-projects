@@ -2,9 +2,16 @@
 #include <iostream>
 #include <stdio.h>
 
-System::System(){
+System::System()
+{
     this->contratoCtrl = new ContratoCtrl;
 }
+
+void MsgDefinirPeriodoDoContrato(char *inicio, char *termino);
+Modalidade *MsgInserirModalidadesDoProfessor(int qtdeModalidades, Modalidade** modalidades);
+
+void System::CriarTurma(){}
+void System::MatricularAluno(){}
 
 void System::BootSystem(){
     bool systemLoad = true;
@@ -12,7 +19,7 @@ void System::BootSystem(){
     {
         system(CLEAR_TERMINAL);
         std::cout << "Bem Vindo\n";
-        std::cout << "O que voce deseja?\n";
+        std::cout << "O que voce de";
         std::cout << "1. Criar Turma\n";
         std::cout << "2. Matricular Aluno\n";
         std::cout << "3. Contratar Funcionario\n";
@@ -44,38 +51,36 @@ void System::ContratarFuncionario()
     system(CLEAR_TERMINAL);
     std::cout << "Preenca os campos do contrato....\n";
 
-    int cpf,i ,j = 0;
+    int cpf,i;
     std::cout << "CPF: ";
     std::cin >> cpf;
     Modalidade **modalidades = this->contratoCtrl->IniciarContrato(cpf, &i);
 
-    if(modalidades == NULL){
-        std::cout << "Digite 1 para sair.....";
-        std::cin >> cpf;
-        return;
-    }
+    char inicio[10], termino[10];
+    MsgDefinirPeriodoDoContrato(inicio, termino);
+    this->contratoCtrl->DefinirPeriodoDoContrato(inicio, termino);
 
-
-    char inicio[10], fim[10];
-    std::cout << "Data de Inicio: ";
-    std::cin >> inicio;
-    std::cout << "Data de Termino: ";
-    std::cin >> fim;
-    this->contratoCtrl->DefinirPeriodoDoContrato(inicio, fim);
-
-    std::cout << "Informe as modalidade do contrato: \n";
-    while(j < i){
-        std::cout<< j + 1 << ". "<< modalidades[j]->GetNome() << "\n";
-        j++;
-    }
-
-    std::cin >> i;
-    Modalidade *modalidade = modalidades[i -1];
+    Modalidade *modalidade = MsgInserirModalidadesDoProfessor(i, modalidades);
     this->contratoCtrl->InserirModalidadesDoProfessor(modalidade);
 
-    system(CLEAR_TERMINAL);
     this->contratoCtrl->Confirmar();
 }
 
-void System::CriarTurma(){}
-void System::MatricularAluno(){}
+
+
+void MsgDefinirPeriodoDoContrato(char* inicio, char* termino){
+    std::cout << "Data de Inicio: ";
+    std::cin >> inicio;
+    std::cout << "Data de Termino: ";
+    std::cin >> termino;
+}
+
+Modalidade *MsgInserirModalidadesDoProfessor(int qtdeModalidades, Modalidade** modalidades){
+    int j = 0;
+    std::cout << "Informe as modalidade do contrato: \n";
+    while(j < qtdeModalidades){
+        std::cout << j+ 1 << ". "<< modalidades[j++]->GetNome() << "\n";
+    }
+    std::cin >> j;
+    return modalidades[j - 1];
+}
