@@ -23,7 +23,7 @@ Modalidade** ContratoCtrl::IniciarContrato(int cpf, int *quantidadeDeModalidades
 
     *quantidadeDeModalidades = professor->GetQuantidadeModalidade();
 
-    return this->modalidadeDAO->GetModalidades();
+    return professor->GetModalidades();
 }
 
 void ContratoCtrl::DefinirPeriodoDoContrato(char*periodoInicio, char*periodoTermino){
