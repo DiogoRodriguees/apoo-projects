@@ -2,11 +2,12 @@
 #include <iostream>
 #include <stdio.h>
 
-System::System()
-{
+System::System(){
     this->contratoCtrl = new ContratoCtrl;
 }
 
+char MsgBootSystem();
+int MsgIniciarContrato();
 void MsgDefinirPeriodoDoContrato(char *inicio, char *termino);
 Modalidade *MsgInserirModalidadesDoProfessor(int qtdeModalidades, Modalidade** modalidades);
 
@@ -15,20 +16,9 @@ void System::MatricularAluno(){}
 
 void System::BootSystem(){
     bool systemLoad = true;
-    while (systemLoad)
-    {
-        system(CLEAR_TERMINAL);
-        std::cout << "Bem Vindo\n";
-        std::cout << "O que voce de";
-        std::cout << "1. Criar Turma\n";
-        std::cout << "2. Matricular Aluno\n";
-        std::cout << "3. Contratar Funcionario\n";
-        std::cout << "4. Sair\n";
 
-        char opcao;
-        std::cin >> opcao;
-        switch (opcao)
-        {
+    while (systemLoad){ 
+        switch (MsgBootSystem()){
             case '1': this->CriarTurma();
             break;
 
@@ -48,15 +38,12 @@ void System::BootSystem(){
 
 void System::ContratarFuncionario()
 {
-    system(CLEAR_TERMINAL);
-    std::cout << "Preenca os campos do contrato....\n";
+    int cpf, i;
+    char inicio[10], termino[10];
 
-    int cpf,i;
-    std::cout << "CPF: ";
-    std::cin >> cpf;
+    cpf = MsgIniciarContrato();
     Modalidade **modalidades = this->contratoCtrl->IniciarContrato(cpf, &i);
 
-    char inicio[10], termino[10];
     MsgDefinirPeriodoDoContrato(inicio, termino);
     this->contratoCtrl->DefinirPeriodoDoContrato(inicio, termino);
 
@@ -66,14 +53,36 @@ void System::ContratarFuncionario()
     this->contratoCtrl->Confirmar();
 }
 
+/*************************************************
+*             Mensagens - Boot System            *              
+**************************************************/
+char MsgBootSystem(){
+    system(CLEAR_TERMINAL);
+        
+    std::cout << "Bem Vindo\n";
+    std::cout << "O que voce deseja\n";
+    std::cout << "1. Criar Turma\n";
+    std::cout << "2. Matricular Aluno\n";
+    std::cout << "3. Contratar Funcionario\n";
+    std::cout << "4. Sair\n";
 
+    char opcao;
+    std::cin >> opcao;
+    system(CLEAR_TERMINAL);
 
+    return opcao;
+}
+
+/*************************************************
+*       Mensagens - Contratar Funcionario        *              
+**************************************************/
 void MsgDefinirPeriodoDoContrato(char* inicio, char* termino){
     std::cout << "Data de Inicio: ";
     std::cin >> inicio;
     std::cout << "Data de Termino: ";
     std::cin >> termino;
 }
+
 
 Modalidade *MsgInserirModalidadesDoProfessor(int qtdeModalidades, Modalidade** modalidades){
     int j = 0;
@@ -83,4 +92,13 @@ Modalidade *MsgInserirModalidadesDoProfessor(int qtdeModalidades, Modalidade** m
     }
     std::cin >> j;
     return modalidades[j - 1];
+}
+
+int MsgIniciarContrato(){
+    int cpf;
+    std::cout << "Preenca os campos do contrato....\n";
+    std::cout << "CPF: ";
+    std::cin >> cpf;
+
+    return cpf;
 }
