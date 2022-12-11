@@ -7,7 +7,7 @@ class ModalidadeDAO{
 
 public:
     ModalidadeDAO();
-    Modalidade *Create(char*);
+    Modalidade *Create();
     Modalidade* Retrive(char *);
     void Update(Modalidade *);
     void Delete(char *);
