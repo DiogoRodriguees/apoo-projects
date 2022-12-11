@@ -47,7 +47,14 @@ void System::ContratarFuncionario()
     int cpf,i ,j = 0;
     std::cout << "CPF: ";
     std::cin >> cpf;
-    Modalidade** modalidades = this->contratoCtrl->IniciarContrato(cpf, &i);
+    Modalidade **modalidades = this->contratoCtrl->IniciarContrato(cpf, &i);
+
+    if(modalidades == NULL){
+        std::cout << "Digite 1 para sair.....";
+        std::cin >> cpf;
+        return;
+    }
+
 
     char inicio[10], fim[10];
     std::cout << "Data de Inicio: ";
@@ -62,8 +69,8 @@ void System::ContratarFuncionario()
         j++;
     }
 
-    std::cin >> cpf;
-    Modalidade *modalidade = cpf == 1 ? modalidades[0] : modalidades[1];
+    std::cin >> i;
+    Modalidade *modalidade = modalidades[i -1];
     this->contratoCtrl->InserirModalidadesDoProfessor(modalidade);
 
     system(CLEAR_TERMINAL);

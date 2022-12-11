@@ -1,6 +1,8 @@
 #include "ProfessorDAO.hpp"
 
-Professor* ProfessorDAO::Retrive(int cpf){
+
+ProfessorDAO::ProfessorDAO(){
+    this->countProfessor = 0;
     Professor *professor = new Professor; // pensar em uma maneira de armaenar ovarios professores
     char nome[25] = "Lucio Valentin";
     professor->SetNome(nome);
@@ -14,5 +16,17 @@ Professor* ProfessorDAO::Retrive(int cpf){
     professor->SetModalidade(modalidade1);
     professor->SetModalidade(modalidade2);
 
-    return professor;
+    this->professores[this->countProfessor++] = professor;
+}
+
+Professor* ProfessorDAO::Retrive(int cpf){
+    int i = 0;
+
+    while(i < this->countProfessor){
+        if(professores[i]->GetCPF() == cpf){
+            return professores[i];
+        }
+    }
+
+    return NULL;
 }
