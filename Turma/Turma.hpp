@@ -3,11 +3,20 @@
 
 class Turma{
     Modalidade* modalidade;
-    char dataInici[10];
+    char dataInicio[10];
     char dataTermino[10];
     Professor *professor;
     
 public:
     void SetModalidade(Modalidade*);
-    Modalidade* GetModalidade(char*);
+    Modalidade* GetModalidade();
+
+    void SetDataInicio(char*);
+    char* GetDataInicio();
+
+    void SetDataTermino(char*);
+    char* GetDataTermino();
+
+    void SetProfessor(Professor *);
+    Professor* GetProfessor();
 };
