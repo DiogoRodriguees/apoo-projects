@@ -7,9 +7,13 @@ ModalidadeDAO::ModalidadeDAO(){
     Modalidade *modalidade2 = new Modalidade;
     char nome1[5] = "Boxe";
     char nome2[5] = "Judo";
+    char nome3[10] = "MuayTai";
+    char nome4[10] = "Karate";
 
     this->Create(nome1);
     this->Create(nome2);
+    this->Create(nome3);
+    this->Create(nome4);
 }
 
 Modalidade **ModalidadeDAO::GetModalidades()
