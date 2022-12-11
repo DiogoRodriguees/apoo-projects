@@ -11,8 +11,8 @@ ModalidadeDAO::ModalidadeDAO(){
     char nome4[10] = "Karate";
 
     this->Create(nome1);
-    this->Create(nome2);
     this->Create(nome3);
+    this->Create(nome2);
     this->Create(nome4);
 }
 

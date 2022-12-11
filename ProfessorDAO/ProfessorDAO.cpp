@@ -11,8 +11,8 @@ ProfessorDAO::ProfessorDAO(){
     professor->SetCPF(123);
     Modalidade *modalidade1 = new Modalidade;
     Modalidade *modalidade2 = new Modalidade;
-    modalidade1->SetNome("BOXE");
-    modalidade2->SetNome("JUDO");
+    modalidade1->SetNome("Boxw");
+    modalidade2->SetNome("Judo");
     professor->SetModalidade(modalidade1);
     professor->SetModalidade(modalidade2);
 
