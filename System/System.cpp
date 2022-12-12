@@ -81,6 +81,7 @@ char MsgBootSystem(){
 **************************************************/
 int MsgIniciarContrato(){
     int cpf;
+
     std::cout << "Preenca os campos do contrato....\n";
     std::cout << "CPF: ";
     std::cin >> cpf;
@@ -97,27 +98,34 @@ void MsgDefinirPeriodoDoContrato(char* inicio, char* termino){
 
 Modalidade *MsgInserirModalidadesDoProfessor(int qtdeModalidades, Modalidade** modalidades){
     int j = 0;
+
     system(CLEAR_TERMINAL);
     std::cout << "Informe as modalidade do contrato: \n";
-    while(j < qtdeModalidades){
-        std::cout << j+ 1 << ". "<< modalidades[j++]->GetNome() << "\n";
-    }
+    
+    while(j < qtdeModalidades) std::cout << j+ 1 << ". "<< modalidades[j++]->GetNome() << "\n";
+    
+
     std::cin >> j;
+
     return modalidades[j - 1];
 }
 
 Turma*  MsgInseriTurma(Turma** turmas){
     int i = 0;
+
     system(CLEAR_TERMINAL);
     std::cout << "Informe a turma do contrato.....\n   ";
     std::cout << "Nome      ";
     std::cout << "Data de Inicio      ";
-    std::cout << "Data de Termino\n";
+    std::cout << "Data de Termino   ";
+    std::cout << "Modalidade \n";
 
     while(turmas[i] != NULL){
         std::cout << i + 1 << ". " << turmas[i]->GetNome() << "   ";
         std::cout << turmas[i]->GetDataInicio() << "          ";
-        std::cout << turmas[i]->GetDataTermino() << "\n";
+        std::cout << turmas[i]->GetDataTermino() << "        ";
+        std::cout << turmas[i]->GetModalidade()->GetNome() << "   \n";
+
         i++;
     }
 

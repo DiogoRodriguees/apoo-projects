@@ -35,7 +35,7 @@ void ContratoCtrl::DefinirPeriodoDoContrato(char*periodoInicio, char*periodoTerm
 Turma** ContratoCtrl::InserirModalidadesDoProfessor(Modalidade* modalidade, int* i){
     this->contrato->SetModalidade(modalidade);
 
-    return turmaDAO->GetTurmas();
+    return turmaDAO->GetTurmasPorModalidade(modalidade->GetNome());
 }
 
 void ContratoCtrl::Confirmar(){
@@ -48,7 +48,8 @@ void ContratoCtrl::Confirmar(){
     std::cout << "* Turma..........: ";
     std::cout << this->contrato->GetTurma()->GetNome() << "   ";
     std::cout << this->contrato->GetTurma()->GetDataInicio() << "   ";
-    std::cout << this->contrato->GetTurma()->GetDataTermino() << "   \n";
+    std::cout << this->contrato->GetTurma()->GetDataTermino() << "   ";
+    std::cout << this->contrato->GetTurma()->GetModalidade()->GetNome() << "   \n";
     std::cout << "* Modalidade.....: " << this->contrato->GetModalidade()->GetNome()  << "\n";
     std::cout << "* Nome do Professor: " << this->contrato->GetProfessor()->GetNome()  << "\n";
     std::cout << "\nConfirmar informacoes do contrato? (s)sim (n)nao ";

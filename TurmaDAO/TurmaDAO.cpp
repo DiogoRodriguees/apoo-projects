@@ -1,10 +1,12 @@
 #include "TurmaDAO.hpp"
+#include <iostream>
 
 TurmaDAO::TurmaDAO(){
     this->countTurmas = 0;
     this->Create();
     Turma *turma = new Turma;
     Modalidade *modalidade = new Modalidade;
+    modalidade->SetNome("Boxe");
     Professor *professor = new Professor;
     turma->SetModalidade(modalidade);
     turma->SetNome("Turma A");
@@ -20,6 +22,7 @@ Turma *TurmaDAO::Create(){
     Professor *professor = new Professor;
     turma->SetModalidade(modalidade);
     turma->SetNome("Turma B");
+    modalidade->SetNome("Judo");
     turma->SetProfessor(professor);
     turma->SetDataInicio("22/03/2022");
     turma->SetDataTermino("22/03/2024");
@@ -40,3 +43,20 @@ Turma** TurmaDAO::GetTurmas(){
 void TurmaDAO::Delete(){}
 void TurmaDAO::update(Turma*){}
 
+Turma **TurmaDAO::GetTurmasPorModalidade(char* modalidade){
+    int i = 0;
+    int j = 0;
+
+    while (i < this->countTurmas)
+    {
+        if(strcmp(modalidade,this->turmas[i]->GetModalidade()->GetNome())==  0){
+            std::cout <<this->turmas[i]->GetModalidade()->GetNome() << " teste dentro da funcao  \n";
+            this->turmasModalidade[j++] = this->turmas[i];
+        }
+        i++;
+    }
+
+    this->turmasModalidade[j] = NULL;
+
+    return turmasModalidade;
+}
