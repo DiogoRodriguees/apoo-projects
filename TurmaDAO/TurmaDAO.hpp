@@ -11,4 +11,5 @@ public:
     Turma *Retrive(char *);
     void Delete();
     void update(Turma *);
+    Turma **GetTurmas();
 };

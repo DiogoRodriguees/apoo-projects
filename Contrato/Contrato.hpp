@@ -1,5 +1,5 @@
 #pragma once
-#include "../Turma/Turma.hpp"
+#include "../TurmaDAO/TurmaDAO.hpp"
 
 #include <string.h>
 class Contrato{
@@ -18,4 +18,6 @@ public:
     Professor * GetProfessor();
     Modalidade *GetModalidade();
     void SetModalidade(Modalidade *);
+    void SetTurma(Turma*);
+    Turma *GetTurma();
 };

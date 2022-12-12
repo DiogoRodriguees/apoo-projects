@@ -29,3 +29,11 @@ Modalidade *Contrato::GetModalidade(){
 void Contrato::SetModalidade(Modalidade *modalidade){
     this->modalidade = modalidade;
 }
+
+void Contrato::SetTurma(Turma* turma){
+    this->turma = turma;
+}
+
+Turma *Contrato::GetTurma(){
+    return this->turma;
+}

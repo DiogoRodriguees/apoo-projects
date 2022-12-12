@@ -7,6 +7,7 @@ ContratoCtrl::ContratoCtrl(){
     this->contratoDAO = new ContratoDAO;
     this->professorDAO = new ProfessorDAO;
     this->modalidadeDAO = new ModalidadeDAO;
+    this->turmaDAO = new TurmaDAO;
 }
 
 Modalidade** ContratoCtrl::IniciarContrato(int cpf, int *quantidadeDeModalidades){
@@ -31,8 +32,10 @@ void ContratoCtrl::DefinirPeriodoDoContrato(char*periodoInicio, char*periodoTerm
     this->contrato->SetPeriodoDeTermino(periodoTermino);
 }
 
-void ContratoCtrl::InserirModalidadesDoProfessor(Modalidade* modalidade){
+Turma** ContratoCtrl::InserirModalidadesDoProfessor(Modalidade* modalidade, int* i){
     this->contrato->SetModalidade(modalidade);
+    
+    return turmaDAO->GetTurmas();
 }
 
 void ContratoCtrl::Confirmar(){
@@ -56,4 +59,8 @@ void ContratoCtrl::SetContratoCorrente(Contrato *contrato){
 
 Contrato *ContratoCtrl::GetContratoCorrente(){
     return this->contrato;
+}
+
+void ContratoCtrl::InserirTurma(Turma *turma){
+    this->contrato->SetTurma(turma);
 }

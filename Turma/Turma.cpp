@@ -30,3 +30,10 @@ void Turma::SetProfessor(Professor *professor){
 Professor* Turma::GetProfessor(){
    return this->professor;
 }
+
+void Turma::SetNome(char *nome){
+   strcpy( this->nome, nome);
+}
+char* Turma::GetNome(){
+   return this->nome;
+}

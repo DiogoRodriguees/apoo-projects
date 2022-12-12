@@ -10,6 +10,7 @@ char MsgBootSystem();
 int MsgIniciarContrato();
 void MsgDefinirPeriodoDoContrato(char *inicio, char *termino);
 Modalidade *MsgInserirModalidadesDoProfessor(int qtdeModalidades, Modalidade** modalidades);
+Turma* MsgInseriTurma(Turma** turmas);
 
 void System::CriarTurma(){}
 void System::MatricularAluno(){}
@@ -48,8 +49,9 @@ void System::ContratarFuncionario()
     this->contratoCtrl->DefinirPeriodoDoContrato(inicio, termino);
 
     Modalidade *modalidade = MsgInserirModalidadesDoProfessor(i, modalidades);
-    this->contratoCtrl->InserirModalidadesDoProfessor(modalidade);
+    Turma** turmas = this->contratoCtrl->InserirModalidadesDoProfessor(modalidade, &i);
 
+    Turma* turma  = MsgInseriTurma(turmas);
     this->contratoCtrl->Confirmar();
 }
 
@@ -76,6 +78,15 @@ char MsgBootSystem(){
 /*************************************************
 *       Mensagens - Contratar Funcionario        *              
 **************************************************/
+int MsgIniciarContrato(){
+    int cpf;
+    std::cout << "Preenca os campos do contrato....\n";
+    std::cout << "CPF: ";
+    std::cin >> cpf;
+
+    return cpf;
+}
+
 void MsgDefinirPeriodoDoContrato(char* inicio, char* termino){
     std::cout << "Data de Inicio: ";
     std::cin >> inicio;
@@ -83,9 +94,9 @@ void MsgDefinirPeriodoDoContrato(char* inicio, char* termino){
     std::cin >> termino;
 }
 
-
 Modalidade *MsgInserirModalidadesDoProfessor(int qtdeModalidades, Modalidade** modalidades){
     int j = 0;
+    system(CLEAR_TERMINAL);
     std::cout << "Informe as modalidade do contrato: \n";
     while(j < qtdeModalidades){
         std::cout << j+ 1 << ". "<< modalidades[j++]->GetNome() << "\n";
@@ -94,11 +105,20 @@ Modalidade *MsgInserirModalidadesDoProfessor(int qtdeModalidades, Modalidade** m
     return modalidades[j - 1];
 }
 
-int MsgIniciarContrato(){
-    int cpf;
-    std::cout << "Preenca os campos do contrato....\n";
-    std::cout << "CPF: ";
-    std::cin >> cpf;
+Turma*  MsgInseriTurma(Turma** turmas){
+    int i = 0;
+    system(CLEAR_TERMINAL);
+    std::cout << "Informe a turma: \n   ";
+    std::cout << "Nome      ";
+    std::cout << "Data de Inicio      ";
+    std::cout << "Data de Termino\n";
 
-    return cpf;
+    while(turmas[i] != NULL){
+
+        std::cout << i + 1 << ". "<< turmas[i]->GetNome()<< "   "  << turmas[i]->GetDataInicio()  << "          " <<  turmas[i]->GetDataTermino()  << "\n";
+        i++;
+    }
+
+    std::cin >> i;
+    return turmas[i - 1];
 }
