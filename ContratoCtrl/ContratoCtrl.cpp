@@ -15,8 +15,7 @@ Modalidade** ContratoCtrl::IniciarContrato(int cpf, int *quantidadeDeModalidades
     Professor *professor = this->professorDAO->Retrive(cpf);
 
     if(professor == NULL){
-        std::cout << "Professor nao encontrado, informe um cpf valido";
-        return NULL;
+        return 0;
     }
 
     contrato->SetProfessor(professor);
@@ -40,7 +39,6 @@ Turma** ContratoCtrl::InserirModalidadesDoProfessor(Modalidade* modalidade, int*
 
 void ContratoCtrl::Confirmar(){
     system(CLEAR_TERMINAL);
-
     std::cout << "Informacoes do Contrato\n\n";
     std::cout << "* Data de Inicio : " << this->contrato->GetPeriodoDeInicio() << "\n";
     std::cout << "* Data de Termino: " << this->contrato->GetPeriodoDeTermino() << "\n";
@@ -56,6 +54,7 @@ void ContratoCtrl::Confirmar(){
     
     char confirma;
     std::cin >> confirma;
+
     if(confirma != 's'){
         this->contrato = NULL;
     }

@@ -43,6 +43,7 @@ void System::ContratarFuncionario()
     char inicio[10], termino[10];
 
     cpf = MsgIniciarContrato();
+    if(cpf == 0) return;
     Modalidade **modalidades = this->contratoCtrl->IniciarContrato(cpf, &i);
 
     MsgDefinirPeriodoDoContrato(inicio, termino);
