@@ -52,6 +52,7 @@ void System::ContratarFuncionario()
     Turma** turmas = this->contratoCtrl->InserirModalidadesDoProfessor(modalidade, &i);
 
     Turma* turma  = MsgInseriTurma(turmas);
+    this->contratoCtrl->InserirTurma(turma);
     this->contratoCtrl->Confirmar();
 }
 
@@ -108,14 +109,15 @@ Modalidade *MsgInserirModalidadesDoProfessor(int qtdeModalidades, Modalidade** m
 Turma*  MsgInseriTurma(Turma** turmas){
     int i = 0;
     system(CLEAR_TERMINAL);
-    std::cout << "Informe a turma: \n   ";
+    std::cout << "Informe a turma do contrato.....\n   ";
     std::cout << "Nome      ";
     std::cout << "Data de Inicio      ";
     std::cout << "Data de Termino\n";
 
     while(turmas[i] != NULL){
-
-        std::cout << i + 1 << ". "<< turmas[i]->GetNome()<< "   "  << turmas[i]->GetDataInicio()  << "          " <<  turmas[i]->GetDataTermino()  << "\n";
+        std::cout << i + 1 << ". " << turmas[i]->GetNome() << "   ";
+        std::cout << turmas[i]->GetDataInicio() << "          ";
+        std::cout << turmas[i]->GetDataTermino() << "\n";
         i++;
     }
 
