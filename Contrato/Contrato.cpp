@@ -5,14 +5,14 @@ void Contrato::SetPeriodoDeInicio(char* inicio){
 }
 
 void Contrato::SetPeriodoDeTermino(char* termino){
-    strcpy(this->dataInicio, termino);
+    strcpy(this->dataTermino, termino);
 }
 
 char* Contrato::GetPeriodoDeInicio(){
     return this->dataInicio;
 }
 char* Contrato::GetPeriodoDeTermino(){
-    return this->dataInicio;
+    return this->dataTermino;
 }
 
 void Contrato::SetProfessor(Professor* professor_recebido){

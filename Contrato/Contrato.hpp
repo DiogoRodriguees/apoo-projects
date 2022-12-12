@@ -4,8 +4,8 @@
 #include <string.h>
 class Contrato{
     Professor *professor;
-    char dataInicio[10];
-    char dataTermino[10];
+    char dataInicio[15];
+    char dataTermino[15];
     Turma *turma;
     Modalidade *modalidade;
 
