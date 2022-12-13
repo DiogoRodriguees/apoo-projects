@@ -21,4 +21,9 @@ public:
     void Confirmar();
     Turma** InserirModalidadesDoProfessor(Modalidade *, int*); // alterar parametro 'professor' para 'modalidade'
     void InserirTurma(Turma *); // alterar parametro 'professor' para 'modalidade'
+    ContratoDAO *GetContratoDAO();
+    ProfessorDAO *GetProfessorDAO();
+    ModalidadeDAO *GetModalidadeDAO();
+    TurmaDAO *GetTurmaDAO();
+
 };

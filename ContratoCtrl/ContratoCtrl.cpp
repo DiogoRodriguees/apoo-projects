@@ -4,15 +4,15 @@
 
 
 ContratoCtrl::ContratoCtrl(){
-    this->contratoDAO = new ContratoDAO;
+    contratoDAO = new ContratoDAO;
     this->professorDAO = new ProfessorDAO;
     this->modalidadeDAO = new ModalidadeDAO;
     this->turmaDAO = new TurmaDAO;
 }
 
 Modalidade** ContratoCtrl::IniciarContrato(int cpf, int *quantidadeDeModalidades){
-    Contrato *contrato = this->contratoDAO->Create();
-    Professor *professor = this->professorDAO->Retrive(cpf);
+    Contrato *contrato = GetContratoDAO()->Create();
+    Professor *professor = GetProfessorDAO()->Retrive(cpf);
 
     if(professor == NULL){
         return 0;
@@ -27,36 +27,41 @@ Modalidade** ContratoCtrl::IniciarContrato(int cpf, int *quantidadeDeModalidades
 }
 
 void ContratoCtrl::DefinirPeriodoDoContrato(char*periodoInicio, char*periodoTermino){
-    this->contrato->SetPeriodoDeInicio(periodoInicio);
-    this->contrato->SetPeriodoDeTermino(periodoTermino);
+    Contrato *contrato = GetContratoCorrente();
+    contrato->SetPeriodoDeInicio(periodoInicio);
+    contrato->SetPeriodoDeTermino(periodoTermino);
 }
 
 Turma** ContratoCtrl::InserirModalidadesDoProfessor(Modalidade* modalidade, int* i){
-    this->contrato->SetModalidade(modalidade);
+    Contrato *contrato = GetContratoCorrente();
+    TurmaDAO *turmaDAO = GetTurmaDAO();
+    contrato->SetModalidade(modalidade);
 
     return turmaDAO->GetTurmasPorModalidade(modalidade->GetNome());
 }
 
 void ContratoCtrl::Confirmar(){
+    Contrato *contrato = GetContratoCorrente();
+
     system(CLEAR_TERMINAL);
     std::cout << "Informacoes do Contrato\n\n";
-    std::cout << "* Data de Inicio : " << this->contrato->GetPeriodoDeInicio() << "\n";
-    std::cout << "* Data de Termino: " << this->contrato->GetPeriodoDeTermino() << "\n";
+    std::cout << "* Data de Inicio : " << contrato->GetPeriodoDeInicio() << "\n";
+    std::cout << "* Data de Termino: " << contrato->GetPeriodoDeTermino() << "\n";
     std::cout << "* Data de Recisao: " << "\n\n";
     std::cout << "* Turma..........: ";
-    std::cout << this->contrato->GetTurma()->GetNome() << "   ";
-    std::cout << this->contrato->GetTurma()->GetDataInicio() << "   ";
-    std::cout << this->contrato->GetTurma()->GetDataTermino() << "   ";
-    std::cout << this->contrato->GetTurma()->GetModalidade()->GetNome() << "   \n";
-    std::cout << "* Modalidade.....: " << this->contrato->GetModalidade()->GetNome()  << "\n";
-    std::cout << "* Nome do Professor: " << this->contrato->GetProfessor()->GetNome()  << "\n";
+    std::cout << contrato->GetTurma()->GetNome() << "   ";
+    std::cout << contrato->GetTurma()->GetDataInicio() << "   ";
+    std::cout << contrato->GetTurma()->GetDataTermino() << "   ";
+    std::cout << contrato->GetTurma()->GetModalidade()->GetNome() << "   \n";
+    std::cout << "* Modalidade.....: " << contrato->GetModalidade()->GetNome()  << "\n";
+    std::cout << "* Nome do Professor: " << contrato->GetProfessor()->GetNome()  << "\n";
     std::cout << "\nConfirmar informacoes do contrato? (s)sim (n)nao ";
     
     char confirma;
     std::cin >> confirma;
 
     if(confirma != 's'){
-        this->contrato = NULL;
+        contrato = NULL;
     }
 }
 
@@ -69,5 +74,22 @@ Contrato *ContratoCtrl::GetContratoCorrente(){
 }
 
 void ContratoCtrl::InserirTurma(Turma *turma){
-    this->contrato->SetTurma(turma);
+    contrato->SetTurma(turma);
+}
+
+ContratoDAO *ContratoCtrl::GetContratoDAO(){
+    return this->contratoDAO;
+}
+
+ProfessorDAO *ContratoCtrl::GetProfessorDAO(){
+    return this->professorDAO;
+}
+
+ModalidadeDAO *ContratoCtrl::GetModalidadeDAO(){
+    return this->modalidadeDAO;
+}
+
+TurmaDAO *ContratoCtrl::GetTurmaDAO(){
+    return this->turmaDAO;
+
 }

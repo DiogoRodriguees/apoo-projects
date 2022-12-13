@@ -10,4 +10,5 @@ public:
     void MatricularAluno();
     void CriarTurma();
     void BootSystem();
+    ContratoCtrl* GetContratoCtrl();
 };

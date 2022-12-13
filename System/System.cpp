@@ -46,20 +46,22 @@ void System::ContratarFuncionario()
 {
     int cpf, i;
     char inicio[10], termino[10];
+    ContratoCtrl *contratoCtrl = GetContratoCtrl();
 
     cpf = MsgIniciarContrato();
     if(cpf == 0) return;
-    Modalidade **modalidades = this->contratoCtrl->IniciarContrato(cpf, &i);
+    Modalidade **modalidades = contratoCtrl->IniciarContrato(cpf, &i);
 
     MsgDefinirPeriodoDoContrato(inicio, termino);
-    this->contratoCtrl->DefinirPeriodoDoContrato(inicio, termino);
+    contratoCtrl->DefinirPeriodoDoContrato(inicio, termino);
 
+    std::cout << "\nTudo ok\n";
     Modalidade *modalidade = MsgInserirModalidadesDoProfessor(i, modalidades);
-    Turma** turmas = this->contratoCtrl->InserirModalidadesDoProfessor(modalidade, &i);
+    Turma **turmas = contratoCtrl->InserirModalidadesDoProfessor(modalidade, &i);
 
     Turma* turma  = MsgInseriTurma(turmas);
-    this->contratoCtrl->InserirTurma(turma);
-    this->contratoCtrl->Confirmar();
+    contratoCtrl->InserirTurma(turma);
+    contratoCtrl->Confirmar();
 }
 
 void System::CriarTurma(){}
@@ -138,4 +140,8 @@ Turma*  MsgInseriTurma(Turma** turmas){
 
     std::cin >> i;
     return turmas[i - 1];
+}
+
+ContratoCtrl* System::GetContratoCtrl(){
+    return this->contratoCtrl;
 }
