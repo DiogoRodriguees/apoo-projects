@@ -32,10 +32,13 @@ void System::BootSystem(){
             case '2': this->MatricularAluno();
             break;
 
-            case '3': this->ContratarFuncionario();
+            case '3': this->PesquisarContrato();
             break;
 
-            case '4': systemLoad = false;
+            case '4': this->ContratarFuncionario();
+            break;
+
+            case '0': systemLoad = false;
             break;
         }
     }
@@ -55,7 +58,6 @@ void System::ContratarFuncionario()
     MsgDefinirPeriodoDoContrato(inicio, termino);
     contratoCtrl->DefinirPeriodoDoContrato(inicio, termino);
 
-    std::cout << "\nTudo ok\n";
     Modalidade *modalidade = MsgInserirModalidadesDoProfessor(i, modalidades);
     Turma **turmas = contratoCtrl->InserirModalidadesDoProfessor(modalidade, &i);
 
@@ -73,12 +75,16 @@ void System::MatricularAluno(){}
 char MsgBootSystem(){
     system(CLEAR_TERMINAL);
         
-    std::cout << "Bem Vindo\n";
-    std::cout << "O que voce deseja\n";
-    std::cout << "1. Criar Turma\n";
-    std::cout << "2. Matricular Aluno\n";
-    std::cout << "3. Contratar Funcionario\n";
-    std::cout << "4. Sair\n";
+    std::cout << "-----------------------------------\n";
+    std::cout << "*            Bem Vindo            *\n";
+    std::cout << "-----------------------------------\n";
+    std::cout << "  0. Sair\n";
+    std::cout << "  1. Criar Turma          \n";
+    std::cout << "  2. Matricular Aluno     \n";
+    std::cout << "  3. Pesquisar Contrato   \n";
+    std::cout << "  4. Contratar Funcionario\n";
+    std::cout << "-----------------------------------\n";
+
 
     char opcao;
     std::cin >> opcao;
@@ -140,6 +146,17 @@ Turma*  MsgInseriTurma(Turma** turmas){
 
     std::cin >> i;
     return turmas[i - 1];
+}
+
+
+void System::PesquisarContrato(){
+    int cpf;
+    std::cout << "Informe o cpf: ";
+    std::cin >> cpf;
+
+    ContratoCtrl *contratoCtrl = GetContratoCtrl();
+
+    contratoCtrl->ExibirContrato(cpf);
 }
 
 ContratoCtrl* System::GetContratoCtrl(){

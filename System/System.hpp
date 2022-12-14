@@ -11,4 +11,5 @@ public:
     void CriarTurma();
     void BootSystem();
     ContratoCtrl* GetContratoCtrl();
+    void PesquisarContrato();
 };

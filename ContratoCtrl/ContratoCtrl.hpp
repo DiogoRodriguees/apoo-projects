@@ -25,5 +25,5 @@ public:
     ProfessorDAO *GetProfessorDAO();
     ModalidadeDAO *GetModalidadeDAO();
     TurmaDAO *GetTurmaDAO();
-
+    void ExibirContrato(int);
 };

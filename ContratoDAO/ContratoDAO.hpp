@@ -3,11 +3,11 @@
 
 class ContratoDAO{
     Contrato *contratos[15];
-    int novo = 0;
+    int novo;
 
 public:
     Contrato* Create();
-    Contrato* Retrive();
+    Contrato* Retrive(Professor* );
     void Delete(Contrato*);
     void UpDate(Contrato*);
 };

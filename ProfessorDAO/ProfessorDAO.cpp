@@ -4,7 +4,7 @@
 ProfessorDAO::ProfessorDAO(){
     this->countProfessor = 0;
     Professor *professor = new Professor; // pensar em uma maneira de armaenar ovarios professores
-    char nome[25] = "Lucio Valentin";
+    char nome[25] = "Diogo Rodrigues";
     professor->SetNome(nome);
     professor->SetSalario(15000);
     professor->SetInativo(false);
@@ -23,8 +23,8 @@ Professor* ProfessorDAO::Retrive(int cpf){
     int i = 0;
 
     while(i < this->countProfessor){
-        if(professores[i]->GetCPF() == cpf){
-            return professores[i];
+        if(this->professores[i]->GetCPF() == cpf){
+            return this->professores[i];
         }
     }
 
